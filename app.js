@@ -76,15 +76,25 @@ function loadMySubmissions(){
    ============================================================ */
 function initGate(){
   const gate = $("ageGate");
-  if (readLS(LS_AGE, false)) { gate.hidden = true; return; }
+
+  // Dismiss with an INLINE style, not just the hidden attribute. An older
+  // cached stylesheet can still be forcing display:flex on this element, and
+  // inline style outranks any stylesheet rule. This stays correct even if a
+  // visitor is a version behind.
+  const dismiss = () => { gate.hidden = true; gate.style.display = "none"; };
+
+  if (readLS(LS_AGE, false)) { dismiss(); return; }
+
   gate.hidden = false;
+  gate.style.display = "";   // let the stylesheet show it
   document.body.style.overflow = "hidden";
 
   $("ageYes").addEventListener("click", () => {
     writeLS(LS_AGE, true);
-    gate.hidden = true;
+    dismiss();
     document.body.style.overflow = "";
   });
+
   $("ageNo").addEventListener("click", () => {
     // Send them somewhere genuinely useful rather than a dead end.
     window.location.href = "https://www.cdc.gov/tobacco/quit_smoking/index.html";
