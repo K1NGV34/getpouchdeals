@@ -3,211 +3,229 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Pouch Deals Near You — Zyn, Velo, On!, Rogue Prices at 7-Eleven, Circle K &amp; More | GetPouchDeals</title>
-<meta name="description" content="Real nicotine pouch prices reported by real buyers. Compare Zyn, Velo, On!, Rogue and Zone prices per pouch across 7-Eleven, Circle K, QuikTrip, Wawa, Sheetz and more. Find the cheapest can near you.">
+<title>Pouch Deals — Zyn, Velo, On! Prices at 7-Eleven, Circle K, QuikTrip | GetPouchDeals</title>
+<meta name="description" content="Nicotine pouch prices reported by real shoppers. Compare Zyn, Velo, On!, Rogue and Zone cost per pouch across 7-Eleven, Circle K, QuikTrip, Wawa, Sheetz and more.">
 <link rel="canonical" href="https://getpouchdeals.com/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="GetPouchDeals — real pouch prices, reported by buyers">
-<meta property="og:description" content="Compare nicotine pouch prices per pouch across convenience store chains. Find the cheapest can near you.">
+<meta property="og:title" content="GetPouchDeals — pouch prices reported by shoppers">
+<meta property="og:description" content="Compare nicotine pouch prices per pouch across convenience store chains.">
 <meta property="og:url" content="https://getpouchdeals.com/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#0b0e13">
 <meta name="robots" content="index,follow">
 
-<link rel="stylesheet" href="styles.css?v=2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=3">
+
 <script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"WebSite",
-  "name":"GetPouchDeals",
-  "url":"https://getpouchdeals.com/",
-  "description":"Community-reported nicotine pouch prices across US convenience store chains.",
-  "potentialAction":{
-    "@type":"SearchAction",
-    "target":"https://getpouchdeals.com/?q={search_term_string}",
-    "query-input":"required name=search_term_string"
-  }
-}
+{"@context":"https://schema.org","@type":"WebSite","name":"GetPouchDeals",
+"url":"https://getpouchdeals.com/",
+"description":"Community-reported nicotine pouch prices across US convenience store chains."}
+</script>
+
+<script>
+/* theme must be applied before first paint or the page flashes */
+(function(){
+  try {
+    var t = localStorage.getItem('gpd_theme');
+    if (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) t = 'dark';
+    if (t) document.documentElement.setAttribute('data-theme', t);
+  } catch(e){}
+})();
 </script>
 </head>
 <body>
 
-<!-- ============ 21+ GATE (required for nicotine content) ============ -->
-<div class="gate" id="ageGate" hidden>
-  <div class="gate-box">
-    <div class="gate-mark">21+</div>
-    <h1>Are you 21 or older?</h1>
-    <p>This site lists nicotine products and is intended only for adults of legal age
-       to purchase tobacco and nicotine products in their jurisdiction.</p>
-    <div class="gate-actions">
-      <button class="btn primary" id="ageYes">Yes, I'm 21 or older</button>
-      <button class="btn ghost" id="ageNo">No, take me out</button>
-    </div>
-    <p class="gate-fine">We ask once and remember it on this device. No account, no tracking.</p>
-  </div>
+<!-- transparency bar -->
+<div class="topbar">
+  GetPouchDeals is community-supported. Prices come from shoppers, never from stores —
+  <strong>retailers cannot pay to appear in this feed.</strong>
 </div>
 
-<!-- ============ HEADER ============ -->
-<header class="top">
-  <div class="wrap top-inner">
-    <a class="brand" href="/">
-      <span class="brand-dot"></span>
-      <span>Get<strong>Pouch</strong>Deals</span>
+<!-- header -->
+<header class="header">
+  <div class="wrap header-inner">
+    <a class="logo" href="/">
+      <span class="logo-mark">PD</span>
+      <span>getpouchdeals</span>
     </a>
-    <nav class="top-nav">
-      <a href="#deals">Deals</a>
-      <a href="#online">Online</a>
-      <a href="#report">Report a price</a>
-    </nav>
+
+    <div class="search">
+      <label class="sr" for="q">Search deals</label>
+      <input id="q" type="search" placeholder="Search brands, stores, cities" autocomplete="off">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+        <circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/>
+      </svg>
+    </div>
+
+    <div class="header-actions">
+      <a class="action" href="#report">
+        <span class="bubble post">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M12 5v14M5 12h14"/></svg>
+        </span>
+        <span>Post a price</span>
+      </a>
+      <button class="action" id="themeBtn" type="button">
+        <span class="bubble theme">
+          <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19"/></svg>
+        </span>
+        <span>Theme</span>
+      </button>
+    </div>
   </div>
 </header>
 
-<div class="demo-banner" id="demoBanner" hidden>
-  <div class="wrap">
-    <strong>Demo data.</strong> These rows are sample values so you can see the site working —
-    they are not real submissions yet. Flip <code>demoMode</code> off in <code>data.js</code>
-    once real reports arrive.
+<!-- nav tiers -->
+<nav class="navbar">
+  <div class="wrap navbar-inner">
+    <a href="#deals">Deals
+      <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg>
+    </a>
+    <a href="#online">Online Stores
+      <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg>
+    </a>
+    <a href="#report">Community
+      <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg>
+    </a>
   </div>
+</nav>
+
+<div class="catbar">
+  <div class="wrap catbar-inner" id="catBar"></div>
 </div>
 
-<!-- ============ HERO ============ -->
-<section class="hero">
-  <div class="wrap">
-    <h2>The cheapest pouch isn't always at the same store.</h2>
-    <p class="lede">
-      Prices swing by <strong>$3 or more per can</strong> between chains a block apart —
-      and nobody publishes them. GetPouchDeals is a running log of what people actually
-      paid, compared by <strong>cost per pouch</strong>, which is the only number that
-      matters when can sizes differ.
-    </p>
-    <div class="stats" id="stats"></div>
+<main class="wrap">
+
+  <div class="pagehead">
+    <h1 id="feedTitle">Top pouch deals</h1>
+    <span class="count" id="dealCount"></span>
   </div>
-</section>
 
-<!-- AD SLOT 1 — in-content, fixed height, never overlays -->
-<aside class="ad-slot wrap" aria-label="Advertisement">
-  <span class="ad-label">Advertisement</span>
-  <div class="ad-body" data-ad="leaderboard">Ad slot — 728×90 / responsive</div>
-</aside>
-
-<!-- ============ DEALS ============ -->
-<main class="wrap" id="deals">
-  <div class="controls">
-    <div class="ctrl">
-      <label for="q">Search</label>
-      <input id="q" type="search" placeholder="brand, flavor, or city…" autocomplete="off">
-    </div>
-    <div class="ctrl">
+  <div class="filters">
+    <div class="field">
       <label for="storeFilter">Store</label>
       <select id="storeFilter"><option value="">All stores</option></select>
     </div>
-    <div class="ctrl">
+    <div class="field">
       <label for="brandFilter">Brand</label>
       <select id="brandFilter"><option value="">All brands</option></select>
     </div>
-    <div class="ctrl">
-      <label for="sortBy">Sort by</label>
+    <div class="field">
+      <label for="sortBy">Sort</label>
       <select id="sortBy">
-        <option value="perPouch">Cheapest per pouch</option>
-        <option value="perCan">Cheapest per can</option>
+        <option value="perPouch">Lowest cost per pouch</option>
+        <option value="perCan">Lowest price per can</option>
         <option value="savings">Biggest saving</option>
-        <option value="recent">Most recent</option>
+        <option value="recent">Newest report</option>
         <option value="confirmed">Most confirmed</option>
       </select>
     </div>
+    <div class="field">
+      <label for="stateFilter">State</label>
+      <select id="stateFilter"><option value="">All states</option></select>
+    </div>
   </div>
 
-  <div class="feed-head">
-    <h3 id="feedTitle">Best deals right now</h3>
-    <span class="muted" id="dealCount"></span>
-  </div>
-
-  <div class="grid" id="dealsGrid"></div>
-  <p class="empty" id="emptyState" hidden>Nothing matches those filters yet. Try widening them.</p>
-
-  <!-- AD SLOT 2 — after the feed -->
-  <aside class="ad-slot" aria-label="Advertisement">
-    <span class="ad-label">Advertisement</span>
-    <div class="ad-body" data-ad="inline">Ad slot — responsive</div>
+  <aside class="adslot" aria-label="Advertisement">
+    <span class="lbl">Advertisement</span>
+    <div class="body" data-ad="leaderboard"></div>
   </aside>
-</main>
 
-<!-- ============ ONLINE / AFFILIATE ============ -->
-<section class="band" id="online">
-  <div class="wrap">
-    <h3>Buying online instead?</h3>
-    <p class="lede small">
-      Online retailers discount far more aggressively than stores, and shipping is usually
-      free past a cart minimum. These links earn us a commission at no extra cost to you —
-      it's how the site stays free.
-    </p>
+  <div id="demoBanner" class="block" style="border-left:3px solid var(--cta-primary);margin:0 0 16px" hidden>
+    <p style="margin:0"><strong>Sample data.</strong> These rows are illustrative, not real reports.
+    Replace them or clear the feed before launch — set <code>demoMode:false</code> in <code>data.js</code>.</p>
+  </div>
+
+  <section id="deals">
+    <div class="grid" id="dealsGrid"></div>
+    <p class="empty" id="emptyState" hidden>Nothing matches those filters. Try widening them.</p>
+
+    <aside class="adslot" aria-label="Advertisement">
+      <span class="lbl">Advertisement</span>
+      <div class="body" data-ad="inline"></div>
+    </aside>
+  </section>
+
+  <section class="block" id="online">
+    <h2>Buying online instead?</h2>
+    <p>Online retailers discount harder than stores and usually ship free past a cart minimum.
+       Links below earn us a commission at no extra cost to you — it keeps the site free.</p>
     <div class="retailers" id="retailers"></div>
     <p class="disclosure">
-      Disclosure: GetPouchDeals earns a commission on qualifying purchases made through the
-      links above. That never changes the price you pay, and in-store prices are never paid for —
-      stores cannot pay to appear in the feed above.
+      Disclosure: GetPouchDeals earns a commission on qualifying purchases made through the links
+      above, which never changes your price. In-store prices are never paid for — stores cannot
+      pay to appear in the feed.
     </p>
-  </div>
-</section>
+  </section>
 
-<!-- ============ REPORT ============ -->
-<section class="wrap" id="report">
-  <div class="card report">
-    <h3>Report a price you saw</h3>
-    <p class="muted">
-      Screenshot the shelf tag if you can — it makes the report far more trustworthy.
-      One report is genuinely useful. Ten per week keeps the whole feed alive.
-    </p>
-    <form id="reportForm" class="report-form">
-      <div class="rf-row">
-        <div class="ctrl">
+  <section class="block" id="report">
+    <h2>Post a price you saw</h2>
+    <p>A shelf-tag photo makes a report far more trustworthy, but even the number alone helps.
+       One report is useful. Ten a week keeps the whole feed alive.</p>
+    <form id="reportForm">
+      <div class="formgrid">
+        <div class="field">
           <label for="fBrand">Brand</label>
           <select id="fBrand" required><option value="">Choose…</option></select>
         </div>
-        <div class="ctrl">
+        <div class="field">
           <label for="fPrice">Price paid ($)</label>
           <input id="fPrice" type="number" step="0.01" min="0" placeholder="3.49" required>
         </div>
-      </div>
-      <div class="rf-row">
-        <div class="ctrl">
+        <div class="field">
           <label for="fStore">Store</label>
           <input id="fStore" list="storeList" placeholder="QuikTrip" required>
           <datalist id="storeList"></datalist>
         </div>
-        <div class="ctrl">
+        <div class="field">
           <label for="fCity">City &amp; state</label>
           <input id="fCity" placeholder="Tulsa, OK" required>
         </div>
       </div>
-      <div class="ctrl">
+      <div class="field" style="margin-top:10px">
         <label for="fNote">Anything worth knowing? (optional)</label>
-        <input id="fNote" placeholder="Promo price, limit 2 per customer, etc.">
+        <input id="fNote" placeholder="Promo price, limit 2 per customer…">
       </div>
-      <button class="btn primary wide" type="submit">Submit price</button>
-      <p class="form-msg" id="formMsg" hidden></p>
+      <button class="formbtn" type="submit">Submit price</button>
+      <p class="formmsg" id="formMsg" hidden></p>
     </form>
-  </div>
-</section>
+  </section>
 
-<!-- ============ FOOTER ============ -->
+</main>
+
 <footer class="foot">
   <div class="wrap">
     <p class="warning">
       <strong>WARNING:</strong> This product contains nicotine. Nicotine is an addictive chemical.
-      Nicotine pouches are intended for adults 21 and over. Not for use by people who are
-      pregnant, breastfeeding, or have heart conditions.
+      Intended for adults 21 and over. Not for use by people who are pregnant, breastfeeding, or
+      have heart conditions.
     </p>
-    <p class="muted small">
-      GetPouchDeals is an independent, community-run price tracker. We are not affiliated with
-      any brand or retailer listed. Prices are reported by users and may be out of date or
-      wrong — always confirm at the register before you buy. Nothing here is medical advice.
+    <p class="fine">
+      GetPouchDeals is an independent, community-run price tracker. We are not affiliated with any
+      brand or retailer listed. Prices are submitted by users and may be out of date or wrong —
+      confirm at the register before buying. Nothing here is medical advice.
     </p>
-    <p class="muted small">© <span id="year"></span> GetPouchDeals · getpouchdeals.com</p>
+    <p class="fine">© <span id="year"></span> getpouchdeals.com</p>
   </div>
 </footer>
 
-<script src="data.js?v=2"></script>
-<script src="app.js?v=2"></script>
+<!-- 21+ gate -->
+<div class="gate" id="ageGate" hidden>
+  <div class="gatebox">
+    <span class="mark">21+</span>
+    <h2>Are you 21 or older?</h2>
+    <p>This site lists nicotine products and is intended only for adults of legal age to purchase
+       tobacco and nicotine products in their jurisdiction.</p>
+    <div class="gatebtns">
+      <button class="gbtn yes" id="ageYes" type="button">Yes, I'm 21 or older</button>
+      <button class="gbtn no" id="ageNo" type="button">No, take me out</button>
+    </div>
+    <p class="gatefine">We ask once and remember it on this device. No account, no tracking.</p>
+  </div>
+</div>
+
+<script src="data.js?v=3"></script>
+<script src="app.js?v=3"></script>
 </body>
 </html>

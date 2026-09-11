@@ -4,70 +4,69 @@
    ============================================================ */
 "use strict";
 
-/* ---------- affiliate-ready online retailers ----------
-   Each program below was verified to exist and to accept affiliates.
-   Swap `url` for your own tracked link once approved. Commission rates
-   are what the programs currently advertise. */
+/* Online retailers. Each programme verified to exist and accept affiliates.
+   Swap `url` for your tracked link once approved. */
 const RETAILERS = [
-  {name:"Northerner",  rate:"Deals hub",  note:"Long-running US pouch retailer with a dedicated clearance section.", url:"https://www.northerner.com/us/nicotine-pouches/deals"},
-  {name:"Juice Head",  rate:"20% / sale", note:"Direct brand programme, one of the highest rates in the category.", url:"https://juicehead.com/pages/affiliate-program"},
+  {name:"Northerner",  rate:"Deals hub",  note:"US pouch retailer with a dedicated clearance section.", url:"https://www.northerner.com/us/nicotine-pouches/deals"},
+  {name:"Juice Head",  rate:"20% / sale", note:"Direct brand programme — one of the highest rates in the category.", url:"https://juicehead.com/pages/affiliate-program"},
   {name:"JOEY",        rate:"20% / sale", note:"Listed via FlexOffers. ~$1.04 EPC over 90 days.", url:"https://www.flexoffers.com/affiliate-programs/joey-affiliate-program/"},
-  {name:"FRE",         rate:"10% / sale", note:"Runs through CJ with a 30-day cookie window.", url:"https://frepouch.com/pages/fre-affiliate-program"},
+  {name:"FRE",         rate:"10% / sale", note:"Runs through CJ with a 30-day cookie window.", url:"https://frepouch.com/pages/affiliate-program"},
   {name:"ALP",         rate:"Programme",  note:"Newer brand running an active affiliate coalition.", url:"https://alppouch.com/pages/affiliate-program"},
   {name:"SnusDaddy",   rate:"Programme",  note:"Wide import range, good for flavours US stores don't carry.", url:"https://snusdaddy.com/"}
 ];
 
-/* ---------- constants ---------- */
-const LS_AGE = "gpd_age_ok";
-const LS_VOTES = "gpd_my_votes";
-const LS_SUBS = "gpd_my_submissions";
+const LS_AGE = "gpd_age_ok", LS_VOTES = "gpd_my_votes",
+      LS_SUBS = "gpd_my_submissions", LS_THEME = "gpd_theme";
 
 const $ = id => document.getElementById(id);
 const esc = s => String(s == null ? "" : s)
   .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
   .replace(/"/g,"&quot;").replace(/'/g,"&#39;");
 const money = v => "$" + Number(v).toFixed(2);
+const cents = v => (Number(v) * 100).toFixed(1) + "\u00A2";
 
-function readLS(key, fallback){
-  try { const v = localStorage.getItem(key); return v ? JSON.parse(v) : fallback; }
-  catch(_) { return fallback; }
-}
-function writeLS(key, val){
-  try { localStorage.setItem(key, JSON.stringify(val)); } catch(_) {}
-}
+function readLS(k, fb){ try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : fb; } catch(_) { return fb; } }
+function writeLS(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(_) {} }
 
-/* pouches per can for a brand, with a sane default */
-function pouchesFor(brand){
-  return POUCH_COUNT[brand] || 20;
-}
+const pouchesFor = b => POUCH_COUNT[b] || 20;
+const perPouch   = d => d.price / pouchesFor(d.brand);
+/* Per-brand shelf price. A single global figure struck through on every card
+   is the clearest sign a deals feed is synthetic — real shelf prices vary. */
+const typicalFor = d => (typeof TYPICAL !== "undefined" && TYPICAL[d.brand]) || CONFIG.typicalPerCan;
+const brandColor = b => (typeof BRAND_COLOR !== "undefined" && BRAND_COLOR[b]) || "#55606b";
+const savePct    = d => { const t = typicalFor(d); return t ? ((t - d.price) / t) * 100 : 0; };
 
-/* ---------- derived values ---------- */
-function perPouch(d){ return d.price / pouchesFor(d.brand); }
-function perCan(d){ return d.price; }
-function savingsPct(d){
-  if (!CONFIG.typicalPerCan) return 0;
-  return ((CONFIG.typicalPerCan - d.price) / CONFIG.typicalPerCan) * 100;
-}
 function agoLabel(h){
   if (h < 1) return "just now";
   if (h < 24) return Math.round(h) + "h ago";
   const d = Math.round(h / 24);
   return d === 1 ? "1 day ago" : d + " days ago";
 }
-function saveClass(p){
-  if (p >= 25) return "save";
-  if (p >= 10) return "mid";
-  return "high";
-}
 
-/* ---------- working copy of the feed ---------- */
+/* inline icons, no emoji */
+const ICO = {
+  up:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 22V11l5-9 1.2.6a2 2 0 011 2.3L13 9h5.2a2 2 0 012 2.4l-1.4 7A2 2 0 0116.8 20H7z"/><path d="M7 11H4v11h3"/></svg>',
+  down:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2v11l-5 9-1.2-.6a2 2 0 01-1-2.3L11 15H5.8a2 2 0 01-2-2.4l1.4-7A2 2 0 017.2 4H17z"/><path d="M17 13h3V2h-3"/></svg>'
+};
+
 let deals = DEALS.map(d => ({...d}));
 let myVotes = readLS(LS_VOTES, {});
 
 function loadMySubmissions(){
-  const subs = readLS(LS_SUBS, []);
-  subs.forEach(s => {
+  readLS(LS_SUBS, []).forEach(s => {
     if (!deals.some(d => d.id === s.id)) deals.push({...s, mine:true});
+  });
+}
+
+/* ============================================================
+   THEME
+   ============================================================ */
+function initTheme(){
+  $("themeBtn").addEventListener("click", () => {
+    const cur = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+    const next = cur === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", next);
+    try { localStorage.setItem(LS_THEME, next); } catch(_) {}
   });
 }
 
@@ -76,88 +75,81 @@ function loadMySubmissions(){
    ============================================================ */
 function initGate(){
   const gate = $("ageGate");
-
-  // Dismiss with an INLINE style, not just the hidden attribute. An older
-  // cached stylesheet can still be forcing display:flex on this element, and
-  // inline style outranks any stylesheet rule. This stays correct even if a
-  // visitor is a version behind.
+  /* Dismiss with an INLINE style — an older cached stylesheet may still be
+     forcing display:flex, and inline style outranks any stylesheet rule. */
   const dismiss = () => { gate.hidden = true; gate.style.display = "none"; };
 
   if (readLS(LS_AGE, false)) { dismiss(); return; }
 
   gate.hidden = false;
-  gate.style.display = "";   // let the stylesheet show it
+  gate.style.display = "";
   document.body.style.overflow = "hidden";
 
   $("ageYes").addEventListener("click", () => {
-    writeLS(LS_AGE, true);
-    dismiss();
-    document.body.style.overflow = "";
+    writeLS(LS_AGE, true); dismiss(); document.body.style.overflow = "";
   });
-
   $("ageNo").addEventListener("click", () => {
-    // Send them somewhere genuinely useful rather than a dead end.
     window.location.href = "https://www.cdc.gov/tobacco/quit_smoking/index.html";
   });
 }
 
 /* ============================================================
-   RENDER
+   RENDERING
    ============================================================ */
-function renderStats(){
-  const n = deals.length;
-  const stores = new Set(deals.map(d => d.store)).size;
-  const best = Math.min(...deals.map(perPouch));
-  const avg = deals.reduce((a,d) => a + perCan(d), 0) / n;
-  const spread = Math.max(...deals.map(perCan)) - Math.min(...deals.map(perCan));
-
-  $("stats").innerHTML = [
-    [n + "", "prices reported"],
-    [stores + "", "stores tracked"],
-    [(best * 100).toFixed(1) + "\u00A2", "cheapest per pouch"],
-    ["$" + spread.toFixed(2), "spread between stores"],
-    ["$" + avg.toFixed(2), "average per can"]
-  ].map(([big,label]) =>
-    `<div class="stat"><b>${esc(big)}</b><span>${esc(label)}</span></div>`
-  ).join("");
-}
-
 function fillSelects(){
-  const sf = $("storeFilter"), bf = $("brandFilter");
-  const storeList = [...new Set(deals.map(d => d.store))].sort();
-  STORES.forEach(s => { if (!storeList.includes(s)) storeList.push(s); });
-  storeList.sort();
-  storeList.forEach(s => sf.insertAdjacentHTML("beforeend",
-    `<option value="${esc(s)}">${esc(s)}</option>`));
+  const sf = $("storeFilter"), bf = $("brandFilter"), stf = $("stateFilter");
 
-  const brandList = [...new Set(deals.map(d => d.brand))].sort();
-  BRANDS.forEach(b => { if (!brandList.includes(b)) brandList.push(b); });
-  brandList.sort();
-  brandList.forEach(b => bf.insertAdjacentHTML("beforeend",
-    `<option value="${esc(b)}">${esc(b)}</option>`));
+  const stores = [...new Set(deals.map(d => d.store))].sort();
+  STORES.forEach(s => { if (!stores.includes(s)) stores.push(s); });
+  stores.sort().forEach(s => sf.insertAdjacentHTML("beforeend", `<option value="${esc(s)}">${esc(s)}</option>`));
 
-  $("fBrand").insertAdjacentHTML("beforeend",
-    brandList.map(b => `<option value="${esc(b)}">${esc(b)}</option>`).join(""));
-  $("storeList").innerHTML =
-    storeList.map(s => `<option value="${esc(s)}"></option>`).join("");
+  const brands = [...new Set(deals.map(d => d.brand))].sort();
+  BRANDS.forEach(b => { if (!brands.includes(b)) brands.push(b); });
+  brands.sort().forEach(b => {
+    bf.insertAdjacentHTML("beforeend", `<option value="${esc(b)}">${esc(b)}</option>`);
+    $("fBrand").insertAdjacentHTML("beforeend", `<option value="${esc(b)}">${esc(b)}</option>`);
+  });
+
+  [...new Set(deals.map(d => d.state))].filter(Boolean).sort()
+    .forEach(s => stf.insertAdjacentHTML("beforeend", `<option value="${esc(s)}">${esc(s)}</option>`));
+
+  $("storeList").innerHTML = stores.map(s => `<option value="${esc(s)}"></option>`).join("");
+
+  /* category bar — real taxonomy, like a deals site has */
+  const topStores = Object.entries(
+    deals.reduce((a,d) => (a[d.store] = (a[d.store]||0)+1, a), {})
+  ).sort((a,b) => b[1]-a[1]).slice(0,7);
+  $("catBar").innerHTML =
+    `<a href="#deals" class="on" data-cat="">Trending</a>` +
+    topStores.map(([s]) => `<a href="#deals" data-cat="${esc(s)}">${esc(s)} Deals</a>`).join("") +
+    `<a href="#online">Online Only</a>`;
+  $("catBar").addEventListener("click", e => {
+    const a = e.target.closest("a[data-cat]"); if (!a) return;
+    e.preventDefault();
+    document.querySelectorAll("#catBar a").forEach(x => x.classList.remove("on"));
+    a.classList.add("on");
+    $("storeFilter").value = a.dataset.cat || "";
+    render();
+  });
 }
 
-function currentFilters(){
+function filters(){
   return {
     q: $("q").value.trim().toLowerCase(),
     store: $("storeFilter").value,
     brand: $("brandFilter").value,
+    state: $("stateFilter").value,
     sort: $("sortBy").value
   };
 }
 
-function applyFilters(list, f){
+function apply(list, f){
   return list.filter(d => {
     if (f.store && d.store !== f.store) return false;
     if (f.brand && d.brand !== f.brand) return false;
+    if (f.state && d.state !== f.state) return false;
     if (f.q){
-      const hay = [d.brand, d.product, d.city, d.state, d.store, d.note]
-        .join(" ").toLowerCase();
+      const hay = [d.brand, d.product, d.city, d.state, d.store, d.note].join(" ").toLowerCase();
       if (!hay.includes(f.q)) return false;
     }
     return true;
@@ -167,71 +159,93 @@ function applyFilters(list, f){
 function sortList(list, sort){
   const c = [...list];
   switch(sort){
-    case "perCan":    return c.sort((a,b) => perCan(a) - perCan(b));
-    case "savings":   return c.sort((a,b) => savingsPct(b) - savingsPct(a));
+    case "perCan":    return c.sort((a,b) => a.price - b.price);
+    case "savings":   return c.sort((a,b) => savePct(b) - savePct(a));
     case "recent":    return c.sort((a,b) => a.ago - b.ago);
     case "confirmed": return c.sort((a,b) => b.up - a.up);
     default:          return c.sort((a,b) => perPouch(a) - perPouch(b));
   }
 }
 
-function dealCard(d){
-  const pp = perPouch(d), save = savingsPct(d), cls = saveClass(save);
-  const voted = !!myVotes[d.id];
+/* the card — mirrors Slickdeals' DealCardGridV2 anatomy */
+function card(d){
+  const pp = perPouch(d), saved = savePct(d), voted = !!myVotes[d.id];
+  const col = brandColor(d.brand);
+  const isNew = d.ago <= 24;
 
   return `
-  <article class="deal">
-    <div class="deal-top">
-      <div>
-        <div class="deal-brand">${esc(d.brand)}</div>
-        <div class="deal-prod">${esc(d.product)}</div>
+  <article class="card">
+    ${isNew ? `<span class="badge">${d.mine ? "Yours" : "New"}</span>` : ""}
+    <div class="card-body">
+      <div class="thumb" style="--brand:${esc(col)}">
+        <svg class="can" viewBox="0 0 56 74" aria-hidden="true">
+          <ellipse cx="28" cy="8" rx="23" ry="5" fill="rgba(0,0,0,.30)"/>
+          <rect x="5" y="8" width="46" height="58" rx="8" fill="var(--brand)"/>
+          <rect x="5" y="8" width="46" height="16" rx="8" fill="rgba(255,255,255,.18)"/>
+          <rect x="5" y="50" width="46" height="16" rx="8" fill="rgba(0,0,0,.15)"/>
+          <text x="28" y="44" text-anchor="middle" font-size="13" font-weight="700"
+                fill="rgba(255,255,255,.95)" font-family="Outfit,Inter,sans-serif">${esc(d.mg)}mg</text>
+        </svg>
+        <div class="tilemeta">
+          <span class="tilebrand">${esc(d.brand)}</span>
+          <span class="tilespec">${pouchesFor(d.brand)} pouches</span>
+        </div>
       </div>
-      <div>
-        <div class="deal-price ${cls}">${money(d.price)}</div>
-        <div class="ppp">${(pp*100).toFixed(1)}¢/pouch</div>
+      <h3 class="card-title">${esc(d.product)}</h3>
+      <div class="pricerow">
+        <span class="final">${money(d.price)}</span>
+        <span class="list">${money(typicalFor(d))}</span>
+        <span class="perpouch">${cents(pp)}/pouch</span>
       </div>
+      <div class="store">${esc(d.store)} · ${esc(d.city)}, ${esc(d.state)}</div>
+      <div class="meta">${esc(agoLabel(d.ago))} · save ${saved.toFixed(0)}%</div>
+      ${d.note ? `<div class="card-note">${esc(d.note)}</div>` : ""}
     </div>
-    <div><span class="pill ${cls}">${save >= 0 ? "Save " + save.toFixed(0) + "%" : "Above typical"}</span></div>
-    <div class="deal-meta">
-      <span>🏪 ${esc(d.store)}</span>
-      <span>📍 ${esc(d.city)}, ${esc(d.state)}</span>
-      <span>🕒 ${esc(agoLabel(d.ago))}</span>
-    </div>
-    ${d.note ? `<div class="deal-note">${esc(d.note)}</div>` : ""}
-    <div class="deal-foot">
-      <button class="confirm-btn ${voted ? "done" : ""}" data-id="${esc(d.id)}" ${voted ? "disabled" : ""}>
-        ${voted ? "✓ Confirmed" : "Still this price?"} · ${esc(d.up)}
-      </button>
-      ${d.aff ? `<a class="aff-link" href="#online">Buy online →</a>` : ""}
+    <div class="actions">
+      <div class="votes">
+        <button class="votebtn ${voted ? "on" : ""}" data-id="${esc(d.id)}" ${voted ? "disabled" : ""}
+                title="${voted ? "You confirmed this" : "Still this price?"}">
+          ${ICO.up}<span>${esc(d.up)}</span>
+        </button>
+        <button class="votebtn down" data-down="${esc(d.id)}" title="Report this price as gone">${ICO.down}</button>
+      </div>
+      <a class="cta" href="#online">Buy online →</a>
     </div>
   </article>`;
 }
 
 function render(){
-  const f = currentFilters();
-  const list = sortList(applyFilters(deals, f), f.sort);
+  const f = filters();
+  const list = sortList(apply(deals, f), f.sort);
 
-  $("dealsGrid").innerHTML = list.map(dealCard).join("");
+  $("dealsGrid").innerHTML = list.map(card).join("");
   $("emptyState").hidden = list.length > 0;
   $("dealCount").textContent = list.length
     ? list.length + (list.length === 1 ? " deal" : " deals")
     : "";
 
-  const label = f.sort === "perPouch" ? "Cheapest per pouch"
-    : f.sort === "perCan" ? "Cheapest per can"
-    : f.sort === "savings" ? "Biggest savings"
-    : f.sort === "recent" ? "Most recent reports"
-    : "Most confirmed prices";
-  $("feedTitle").textContent = label;
+  const titles = {perPouch:"Lowest cost per pouch", perCan:"Lowest price per can",
+    savings:"Biggest savings", recent:"Newest reports", confirmed:"Most confirmed prices"};
+  $("feedTitle").textContent = titles[f.sort] || "Top pouch deals";
 
-  document.querySelectorAll(".confirm-btn").forEach(b => {
+  document.querySelectorAll(".votebtn[data-id]").forEach(b => {
     b.addEventListener("click", () => {
       const id = Number(b.dataset.id);
       const d = deals.find(x => x.id === id);
       if (!d || myVotes[id]) return;
-      d.up += 1;
-      myVotes[id] = true;
+      d.up += 1; myVotes[id] = true;
       writeLS(LS_VOTES, myVotes);
+      render();
+    });
+  });
+  /* "price is gone" marks locally without pretending to be a global downvote */
+  document.querySelectorAll(".votebtn[data-down]").forEach(b => {
+    b.addEventListener("click", () => {
+      const id = Number(b.dataset.down);
+      const d = deals.find(x => x.id === id);
+      if (!d) return;
+      d.gone = true;
+      writeLS("gpd_gone", [...(readLS("gpd_gone", [])), id]);
       render();
     });
   });
@@ -241,9 +255,9 @@ function renderRetailers(){
   $("retailers").innerHTML = RETAILERS.map(r => `
     <div class="retailer">
       <b>${esc(r.name)}</b>
-      <span class="pill save">${esc(r.rate)}</span>
-      <span class="rt">${esc(r.note)}</span>
-      <a class="go" href="${esc(r.url)}" target="_blank" rel="noopener sponsored">Visit →</a>
+      <span class="rate">${esc(r.rate)}</span>
+      <div class="note">${esc(r.note)}</div>
+      <a href="${esc(r.url)}" target="_blank" rel="noopener sponsored">Visit store →</a>
     </div>`).join("");
 }
 
@@ -260,7 +274,7 @@ function initForm(){
     const cityRaw = $("fCity").value.trim();
     const note = $("fNote").value.trim();
 
-    const fail = m => { msg.hidden = false; msg.className = "form-msg err"; msg.textContent = m; };
+    const fail = m => { msg.hidden = false; msg.className = "formmsg err"; msg.textContent = m; };
     if (!brand) return fail("Pick a brand.");
     if (!Number.isFinite(price) || price <= 0) return fail("Enter a valid price.");
     if (!store) return fail("Which store was it?");
@@ -270,43 +284,34 @@ function initForm(){
     const city = (parts[0] || "").trim();
     const state = (parts[1] || "").trim().toUpperCase().slice(0,2);
 
-    const deal = {
-      id: Date.now(), brand, product: brand + " " + (note ? "" : "report"),
-      price, store, city, state, ago: 0, up: 1, note, aff: false, mine: true
-    };
+    const deal = {id: Date.now(), brand, product: brand + " " + (note || "report"),
+      price, store, city, state, ago: 0, up: 1, note, aff: false, mine: true};
 
-    // Optional backend. With none configured we keep it on-device so the
-    // submit flow is genuinely testable before you wire up a server.
     if (CONFIG.submitEndpoint){
       try {
-        await fetch(CONFIG.submitEndpoint, {
-          method:"POST",
-          headers:{"Content-Type":"application/json"},
-          body: JSON.stringify(deal)
-        });
+        await fetch(CONFIG.submitEndpoint, {method:"POST",
+          headers:{"Content-Type":"application/json"}, body: JSON.stringify(deal)});
       } catch(_) { return fail("Couldn't reach the server — try again in a moment."); }
     }
 
     deals.unshift(deal);
-    const subs = readLS(LS_SUBS, []);
-    subs.unshift(deal);
-    writeLS(LS_SUBS, subs);
+    const subs = readLS(LS_SUBS, []); subs.unshift(deal); writeLS(LS_SUBS, subs);
 
     msg.hidden = false;
-    msg.className = "form-msg ok";
+    msg.className = "formmsg ok";
     msg.textContent = CONFIG.submitEndpoint
       ? "Thanks — your price is live."
-      : "Saved on this device and added to the feed above. Set submitEndpoint in data.js to collect reports from everyone.";
+      : "Saved on this device and added to the feed. Set submitEndpoint in data.js to collect reports from everyone.";
 
     e.target.reset();
-    renderStats(); fillSelectsOnce(); render();
+    reflectGone();
+    render();
   });
 }
 
 /* ============================================================
-   ADS — injected only when a publisher ID is configured.
-   Formats are deliberately limited to inline units so nothing
-   ever overlays or eats the viewport.
+   ADS — only when a publisher ID is set. Inline units only, so
+   nothing ever overlays or eats the viewport.
    ============================================================ */
 function initAds(){
   if (!CONFIG.adsenseClient) return;
@@ -317,31 +322,29 @@ function initAds(){
   s.crossOrigin = "anonymous";
   document.head.appendChild(s);
 
-  document.querySelectorAll(".ad-body[data-ad]").forEach(el => {
-    el.innerHTML = `
-      <ins class="adsbygoogle" style="display:block"
-           data-ad-client="${esc(CONFIG.adsenseClient)}"
-           data-ad-slot="${esc(el.dataset.ad)}"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>`;
+  document.querySelectorAll(".adslot .body[data-ad]").forEach(el => {
+    el.innerHTML = `<ins class="adsbygoogle" style="display:block"
+      data-ad-client="${esc(CONFIG.adsenseClient)}" data-ad-slot="${esc(el.dataset.ad)}"
+      data-ad-format="auto" data-full-width-responsive="true"></ins>`;
     try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch(_) {}
   });
+}
+
+/* prices the user marked as gone stay marked */
+function reflectGone(){
+  const gone = readLS("gpd_gone", []);
+  deals.forEach(d => { if (gone.includes(d.id)) d.gone = true; });
 }
 
 /* ============================================================
    BOOT
    ============================================================ */
-let _selectsFilled = false;
-function fillSelectsOnce(){
-  if (_selectsFilled) return;
-  fillSelects(); _selectsFilled = true;
-}
-
 function boot(){
+  reflectGone();
+  initTheme();
   initGate();
   loadMySubmissions();
-  fillSelectsOnce();
-  renderStats();
+  fillSelects();
   render();
   renderRetailers();
   initForm();
@@ -350,10 +353,9 @@ function boot(){
   if (CONFIG.demoMode) $("demoBanner").hidden = false;
   $("year").textContent = new Date().getFullYear();
 
-  ["q","storeFilter","brandFilter","sortBy"].forEach(id => {
+  ["q","storeFilter","brandFilter","stateFilter","sortBy"].forEach(id => {
     $(id).addEventListener("input", render);
     $(id).addEventListener("change", render);
   });
 }
-
 document.addEventListener("DOMContentLoaded", boot);
