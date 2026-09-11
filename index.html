@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pouch Deals Near You — Zyn, Velo, On!, Rogue Prices at 7-Eleven, Circle K &amp; More | GetPouchDeals</title>
+<meta name="description" content="Real nicotine pouch prices reported by real buyers. Compare Zyn, Velo, On!, Rogue and Zone prices per pouch across 7-Eleven, Circle K, QuikTrip, Wawa, Sheetz and more. Find the cheapest can near you.">
+<link rel="canonical" href="https://getpouchdeals.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="GetPouchDeals — real pouch prices, reported by buyers">
+<meta property="og:description" content="Compare nicotine pouch prices per pouch across convenience store chains. Find the cheapest can near you.">
+<meta property="og:url" content="https://getpouchdeals.com/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0e13">
+<meta name="robots" content="index,follow">
+
+<link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebSite",
+  "name":"GetPouchDeals",
+  "url":"https://getpouchdeals.com/",
+  "description":"Community-reported nicotine pouch prices across US convenience store chains.",
+  "potentialAction":{
+    "@type":"SearchAction",
+    "target":"https://getpouchdeals.com/?q={search_term_string}",
+    "query-input":"required name=search_term_string"
+  }
+}
+</script>
+</head>
+<body>
+
+<!-- ============ 21+ GATE (required for nicotine content) ============ -->
+<div class="gate" id="ageGate" hidden>
+  <div class="gate-box">
+    <div class="gate-mark">21+</div>
+    <h1>Are you 21 or older?</h1>
+    <p>This site lists nicotine products and is intended only for adults of legal age
+       to purchase tobacco and nicotine products in their jurisdiction.</p>
+    <div class="gate-actions">
+      <button class="btn primary" id="ageYes">Yes, I'm 21 or older</button>
+      <button class="btn ghost" id="ageNo">No, take me out</button>
+    </div>
+    <p class="gate-fine">We ask once and remember it on this device. No account, no tracking.</p>
+  </div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="top">
+  <div class="wrap top-inner">
+    <a class="brand" href="/">
+      <span class="brand-dot"></span>
+      <span>Get<strong>Pouch</strong>Deals</span>
+    </a>
+    <nav class="top-nav">
+      <a href="#deals">Deals</a>
+      <a href="#online">Online</a>
+      <a href="#report">Report a price</a>
+    </nav>
+  </div>
+</header>
+
+<div class="demo-banner" id="demoBanner" hidden>
+  <div class="wrap">
+    <strong>Demo data.</strong> These rows are sample values so you can see the site working —
+    they are not real submissions yet. Flip <code>demoMode</code> off in <code>data.js</code>
+    once real reports arrive.
+  </div>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap">
+    <h2>The cheapest pouch isn't always at the same store.</h2>
+    <p class="lede">
+      Prices swing by <strong>$3 or more per can</strong> between chains a block apart —
+      and nobody publishes them. GetPouchDeals is a running log of what people actually
+      paid, compared by <strong>cost per pouch</strong>, which is the only number that
+      matters when can sizes differ.
+    </p>
+    <div class="stats" id="stats"></div>
+  </div>
+</section>
+
+<!-- AD SLOT 1 — in-content, fixed height, never overlays -->
+<aside class="ad-slot wrap" aria-label="Advertisement">
+  <span class="ad-label">Advertisement</span>
+  <div class="ad-body" data-ad="leaderboard">Ad slot — 728×90 / responsive</div>
+</aside>
+
+<!-- ============ DEALS ============ -->
+<main class="wrap" id="deals">
+  <div class="controls">
+    <div class="ctrl">
+      <label for="q">Search</label>
+      <input id="q" type="search" placeholder="brand, flavor, or city…" autocomplete="off">
+    </div>
+    <div class="ctrl">
+      <label for="storeFilter">Store</label>
+      <select id="storeFilter"><option value="">All stores</option></select>
+    </div>
+    <div class="ctrl">
+      <label for="brandFilter">Brand</label>
+      <select id="brandFilter"><option value="">All brands</option></select>
+    </div>
+    <div class="ctrl">
+      <label for="sortBy">Sort by</label>
+      <select id="sortBy">
+        <option value="perPouch">Cheapest per pouch</option>
+        <option value="perCan">Cheapest per can</option>
+        <option value="savings">Biggest saving</option>
+        <option value="recent">Most recent</option>
+        <option value="confirmed">Most confirmed</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="feed-head">
+    <h3 id="feedTitle">Best deals right now</h3>
+    <span class="muted" id="dealCount"></span>
+  </div>
+
+  <div class="grid" id="dealsGrid"></div>
+  <p class="empty" id="emptyState" hidden>Nothing matches those filters yet. Try widening them.</p>
+
+  <!-- AD SLOT 2 — after the feed -->
+  <aside class="ad-slot" aria-label="Advertisement">
+    <span class="ad-label">Advertisement</span>
+    <div class="ad-body" data-ad="inline">Ad slot — responsive</div>
+  </aside>
+</main>
+
+<!-- ============ ONLINE / AFFILIATE ============ -->
+<section class="band" id="online">
+  <div class="wrap">
+    <h3>Buying online instead?</h3>
+    <p class="lede small">
+      Online retailers discount far more aggressively than stores, and shipping is usually
+      free past a cart minimum. These links earn us a commission at no extra cost to you —
+      it's how the site stays free.
+    </p>
+    <div class="retailers" id="retailers"></div>
+    <p class="disclosure">
+      Disclosure: GetPouchDeals earns a commission on qualifying purchases made through the
+      links above. That never changes the price you pay, and in-store prices are never paid for —
+      stores cannot pay to appear in the feed above.
+    </p>
+  </div>
+</section>
+
+<!-- ============ REPORT ============ -->
+<section class="wrap" id="report">
+  <div class="card report">
+    <h3>Report a price you saw</h3>
+    <p class="muted">
+      Screenshot the shelf tag if you can — it makes the report far more trustworthy.
+      One report is genuinely useful. Ten per week keeps the whole feed alive.
+    </p>
+    <form id="reportForm" class="report-form">
+      <div class="rf-row">
+        <div class="ctrl">
+          <label for="fBrand">Brand</label>
+          <select id="fBrand" required><option value="">Choose…</option></select>
+        </div>
+        <div class="ctrl">
+          <label for="fPrice">Price paid ($)</label>
+          <input id="fPrice" type="number" step="0.01" min="0" placeholder="3.49" required>
+        </div>
+      </div>
+      <div class="rf-row">
+        <div class="ctrl">
+          <label for="fStore">Store</label>
+          <input id="fStore" list="storeList" placeholder="QuikTrip" required>
+          <datalist id="storeList"></datalist>
+        </div>
+        <div class="ctrl">
+          <label for="fCity">City &amp; state</label>
+          <input id="fCity" placeholder="Tulsa, OK" required>
+        </div>
+      </div>
+      <div class="ctrl">
+        <label for="fNote">Anything worth knowing? (optional)</label>
+        <input id="fNote" placeholder="Promo price, limit 2 per customer, etc.">
+      </div>
+      <button class="btn primary wide" type="submit">Submit price</button>
+      <p class="form-msg" id="formMsg" hidden></p>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <p class="warning">
+      <strong>WARNING:</strong> This product contains nicotine. Nicotine is an addictive chemical.
+      Nicotine pouches are intended for adults 21 and over. Not for use by people who are
+      pregnant, breastfeeding, or have heart conditions.
+    </p>
+    <p class="muted small">
+      GetPouchDeals is an independent, community-run price tracker. We are not affiliated with
+      any brand or retailer listed. Prices are reported by users and may be out of date or
+      wrong — always confirm at the register before you buy. Nothing here is medical advice.
+    </p>
+    <p class="muted small">© <span id="year"></span> GetPouchDeals · getpouchdeals.com</p>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
