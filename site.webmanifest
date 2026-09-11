@@ -1,0 +1,13 @@
+{
+  "name": "GetPouchDeals",
+  "short_name": "PouchDeals",
+  "description": "Pouch prices reported by shoppers, not stores.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f7f8",
+  "theme_color": "#c64111",
+  "icons": [
+    { "src": "assets/favicon-64.png", "sizes": "64x64", "type": "image/png" },
+    { "src": "assets/icon-180.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}

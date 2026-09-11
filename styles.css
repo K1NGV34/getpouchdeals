@@ -107,11 +107,15 @@ button{font-family:inherit}
 /* ---------- header ---------- */
 .header{background:var(--header-bg);border-bottom:1px solid var(--border-divider)}
 .header-inner{display:flex;align-items:center;gap:20px;height:64px}
-.logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:19px;
-  letter-spacing:-.4px;color:var(--content-primary);flex-shrink:0}
-.logo:hover{text-decoration:none;color:var(--content-primary)}
-.logo-mark{width:32px;height:32px;border-radius:8px;background:var(--cta-primary);color:#fff;
-  display:grid;place-items:center;font-size:14px;font-weight:800;letter-spacing:-.5px}
+.logo{display:flex;align-items:center;flex-shrink:0}
+.logo:hover{text-decoration:none}
+/* two supplied logo variants — the dark wordmark is invisible on white and the
+   light one is invisible on dark, so each theme gets its own asset */
+.logo-img{height:32px;width:auto;display:block}
+.logo-img--dark{display:none}
+[data-theme="dark"] .logo-img--light{display:none}
+[data-theme="dark"] .logo-img--dark{display:block}
+@media(max-width:600px){.logo-img{height:26px}}
 .search{flex:1;max-width:560px;position:relative}
 .search input{width:100%;height:40px;border:1px solid var(--border-strong);border-radius:var(--radius-pill);
   background:var(--surface-2);padding:0 40px 0 16px;font-size:14px;color:var(--content-primary)}
