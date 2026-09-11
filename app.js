@@ -52,6 +52,48 @@ const ICO = {
 let deals = DEALS.map(d => ({...d}));
 let myVotes = readLS(LS_VOTES, {});
 
+/* ============================================================
+   LIVE DATA — real submissions from the API.
+   The API speaks its own vocabulary (chain/confirmations/updatedAt)
+   and uses hex ids, so map it into the shape the UI already renders.
+   ============================================================ */
+function fromApi(d){
+  return {
+    id:      String(d.id),
+    brand:   d.brand,
+    mg:      d.mg || "",
+    product: d.brand + (d.size ? " " + d.size : ""),
+    price:   Number(d.price),
+    store:   d.chain,
+    city:    d.city,
+    state:   d.state,
+    note:    d.note,
+    up:      Number(d.confirmations) || 0,
+    reports: Number(d.reports) || 1,
+    ago:     Math.max(0, (Date.now() / 1000 - Number(d.updatedAt)) / 3600),
+    aff:     false,
+    live:    true
+  };
+}
+
+async function loadLive(){
+  if (!CONFIG.apiBase) return 0;
+  try {
+    const r = await fetch(CONFIG.apiBase + "/deals", {cache: "no-store"});
+    if (!r.ok) return 0;
+    const j = await r.json();
+    if (!j || !j.ok) return 0;
+
+    const live = (j.deals || []).map(fromApi);
+    // While demoMode is on, keep the sample rows so the feed isn't bare.
+    // Once real reports exist and demoMode is off, only live data shows.
+    deals = live.concat(CONFIG.demoMode ? DEALS.map(d => ({...d})) : []);
+    return live.length;
+  } catch(_) {
+    return 0;
+  }
+}
+
 function loadMySubmissions(){
   readLS(LS_SUBS, []).forEach(s => {
     if (!deals.some(d => d.id === s.id)) deals.push({...s, mine:true});
@@ -184,7 +226,7 @@ function card(d){
           <rect x="5" y="8" width="46" height="16" rx="8" fill="rgba(255,255,255,.18)"/>
           <rect x="5" y="50" width="46" height="16" rx="8" fill="rgba(0,0,0,.15)"/>
           <text x="28" y="44" text-anchor="middle" font-size="13" font-weight="700"
-                fill="rgba(255,255,255,.95)" font-family="Outfit,Inter,sans-serif">${esc(d.mg)}mg</text>
+                fill="rgba(255,255,255,.95)" font-family="Outfit,Inter,sans-serif">${d.mg ? esc(d.mg) + "mg" : esc(d.brand.slice(0, 3))}</text>
         </svg>
         <div class="tilemeta">
           <span class="tilebrand">${esc(d.brand)}</span>
@@ -229,23 +271,45 @@ function render(){
   $("feedTitle").textContent = titles[f.sort] || "Top pouch deals";
 
   document.querySelectorAll(".votebtn[data-id]").forEach(b => {
-    b.addEventListener("click", () => {
-      const id = Number(b.dataset.id);
-      const d = deals.find(x => x.id === id);
+    b.addEventListener("click", async () => {
+      const id = String(b.dataset.id);
+      const d = deals.find(x => String(x.id) === id);
       if (!d || myVotes[id]) return;
-      d.up += 1; myVotes[id] = true;
+
+      // optimistically mark as yours so the button can't be double-fired
+      myVotes[id] = true;
       writeLS(LS_VOTES, myVotes);
+
+      if (d.live && CONFIG.apiBase){
+        b.disabled = true;
+        try {
+          const r = await fetch(CONFIG.apiBase + "/vote", {
+            method: "POST", headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({id})
+          });
+          const j = await r.json();
+          if (j && j.ok){
+            d.up = j.confirmations;          // the real shared count
+          } else {
+            delete myVotes[id]; writeLS(LS_VOTES, myVotes);   // let them retry
+          }
+        } catch(_) {
+          delete myVotes[id]; writeLS(LS_VOTES, myVotes);
+        }
+      } else {
+        d.up += 1;
+      }
       render();
     });
   });
   /* "price is gone" marks locally without pretending to be a global downvote */
   document.querySelectorAll(".votebtn[data-down]").forEach(b => {
     b.addEventListener("click", () => {
-      const id = Number(b.dataset.down);
-      const d = deals.find(x => x.id === id);
+      const id = String(b.dataset.down);
+      const d = deals.find(x => String(x.id) === id);
       if (!d) return;
       d.gone = true;
-      writeLS("gpd_gone", [...(readLS("gpd_gone", [])), id]);
+      writeLS("gpd_gone", [...new Set([...readLS("gpd_gone", []), id])]);
       render();
     });
   });
@@ -284,24 +348,51 @@ function initForm(){
     const city = (parts[0] || "").trim();
     const state = (parts[1] || "").trim().toUpperCase().slice(0,2);
 
-    const deal = {id: Date.now(), brand, product: brand + " " + (note || "report"),
-      price, store, city, state, ago: 0, up: 1, note, aff: false, mine: true};
-
-    if (CONFIG.submitEndpoint){
+    /* --- real submission path --- */
+    if (CONFIG.apiBase){
+      let j;
       try {
-        await fetch(CONFIG.submitEndpoint, {method:"POST",
-          headers:{"Content-Type":"application/json"}, body: JSON.stringify(deal)});
-      } catch(_) { return fail("Couldn't reach the server — try again in a moment."); }
+        const r = await fetch(CONFIG.apiBase + "/report", {
+          method: "POST", headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({brand, chain: store, price, city, state, note, qty: 1})
+        });
+        j = await r.json();
+        if (!r.ok || !j || !j.ok){
+          return fail((j && j.error) || "That didn't go through — try again in a moment.");
+        }
+      } catch(_) {
+        return fail("Couldn't reach the server — try again in a moment.");
+      }
+
+      // Re-read from the server so the new deal shows with its real id and
+      // shared confirmation count rather than a local guess.
+      await loadLive();
+      deals.unshift({
+        id: String(j.id), brand, mg: "", product: brand, price,
+        store, city, state, note, up: j.confirmations || 0, reports: 1,
+        ago: 0, aff: false, live: true, mine: true
+      });
+      deals = deals.filter((d, i, a) => a.findIndex(x => String(x.id) === String(d.id)) === i);
+
+      msg.hidden = false;
+      msg.className = "formmsg ok";
+      msg.textContent = j.message || "Thanks — your price is live.";
+      e.target.reset();
+      reflectGone();
+      render();
+      return;
     }
+
+    /* --- offline fallback: keep it on this device only --- */
+    const deal = {id: Date.now(), brand, product: brand + " " + (note || "report"),
+      price, store, city, state, ago: 0, up: 0, note, aff: false, mine: true};
 
     deals.unshift(deal);
     const subs = readLS(LS_SUBS, []); subs.unshift(deal); writeLS(LS_SUBS, subs);
 
     msg.hidden = false;
     msg.className = "formmsg ok";
-    msg.textContent = CONFIG.submitEndpoint
-      ? "Thanks — your price is live."
-      : "Saved on this device and added to the feed. Set submitEndpoint in data.js to collect reports from everyone.";
+    msg.textContent = "Saved on this device only — the report server is unreachable.";
 
     e.target.reset();
     reflectGone();
@@ -339,11 +430,16 @@ function reflectGone(){
 /* ============================================================
    BOOT
    ============================================================ */
-function boot(){
+async function boot(){
+  // Pull real submissions before anything renders, so filters and the
+  // category bar are built from the live feed.
+  const liveCount = await loadLive();
+
   reflectGone();
   initTheme();
   initGate();
-  loadMySubmissions();
+  // Locally-remembered reports would duplicate what the server already has.
+  if (!CONFIG.apiBase) loadMySubmissions();
   fillSelects();
   render();
   renderRetailers();
@@ -351,6 +447,7 @@ function boot(){
   initAds();
 
   if (CONFIG.demoMode) $("demoBanner").hidden = false;
+  if (liveCount) console.log(`getpouchdeals: ${liveCount} live report(s) loaded`);
   $("year").textContent = new Date().getFullYear();
 
   ["q","storeFilter","brandFilter","stateFilter","sortBy"].forEach(id => {

@@ -14,6 +14,11 @@ const CONFIG = {
   // Flip to false when you replace the sample rows with real reports.
   demoMode: true,
 
+  // The submission API (Cloudflare Worker + KV). Real deal reports land here
+  // and are served back to every visitor, so votes and prices are shared
+  // rather than trapped in one browser.
+  apiBase: "https://getpouchdeals-api.getpouchdeals.workers.dev",
+
   // Where the "Post a price" form posts. Blank = store locally only.
   submitEndpoint: "",
 
