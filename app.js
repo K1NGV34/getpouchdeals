@@ -315,6 +315,43 @@ function render(){
   });
 }
 
+/* ============================================================
+   ONLINE PRICES
+   Real published prices from retailers' own catalogues, written to
+   online-deals.json by sources/fetch_online_prices.py. Deliberately kept
+   visually separate from the community feed so nobody mistakes a retailer's
+   price for a shopper's report.
+   ============================================================ */
+async function loadOnlinePrices(){
+  const box = $("onlineList");
+  if (!box) return;
+  try {
+    const r = await fetch("online-deals.json?v=" + Date.now());
+    if (!r.ok) return;
+    const d = await r.json();
+    const items = (d.items || []).filter(i => i.perPouch && i.pouchesVerified).slice(0, 12);
+    if (!items.length) return;
+
+    box.innerHTML = items.map(i => `
+      <a class="onlineitem" href="${esc(i.url)}" target="_blank" rel="noopener">
+        <span class="oiprice">${money(i.price)}</span>
+        <span class="oipp">${cents(i.perPouch)}<small>/pouch</small></span>
+        <span class="oibody">
+          <span class="oibrand">${esc(i.brand || i.store)}</span>
+          <span class="oititle">${esc(i.product)}</span>
+          <span class="oistore">${esc(i.store)}${i.pouchesPerCan ? " · " + i.pouchesPerCan + " pouches" : ""}</span>
+        </span>
+      </a>`).join("");
+
+    const stamp = $("onlineStamp");
+    if (stamp && d.generatedAtISO){
+      const dt = new Date(d.generatedAtISO);
+      stamp.textContent = `Last refreshed ${dt.toLocaleDateString()} from ` +
+        (d.sources || []).map(s => s.name).join(", ") + ".";
+    }
+  } catch(_) { /* offline or not generated yet — leave the block empty */ }
+}
+
 function renderRetailers(){
   $("retailers").innerHTML = RETAILERS.map(r => `
     <div class="retailer">
@@ -443,6 +480,7 @@ async function boot(){
   fillSelects();
   render();
   renderRetailers();
+  loadOnlinePrices();
   initForm();
   initAds();
 

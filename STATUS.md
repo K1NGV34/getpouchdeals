@@ -2,90 +2,92 @@
 
 Last updated: 2026-09-11
 
-## LIVE
+## What is live
 
-| | |
+| Piece | Where |
 |---|---|
-| **Custom domain** | https://getpouchdeals.com/ — **LIVE**, HTTPS, cert approved |
-| **www** | pending certificate (apex cert covers only the bare domain) |
-| **Origin** | https://k1ngv34.github.io/getpouchdeals/ |
-| **Repo** | https://github.com/K1NGV34/getpouchdeals |
-| **Hosting** | GitHub Pages, branch `main`, free |
-| **Watchdog** | cron `5df4be568ad6`, every 6h, silent unless something breaks |
+| Site | https://getpouchdeals.com/ (HTTPS, http→https 301) |
+| Origin | https://k1ngv34.github.io/getpouchdeals/ |
+| Repo | https://github.com/K1NGV34/getpouchdeals |
+| **API** | https://getpouchdeals-api.getpouchdeals.workers.dev |
+| Cloudflare zone | `eb1fec5cdb5a96ee9c0aed2303111822` |
 
-Verified in a real browser on the live domain: secure context, stylesheet applied,
-21+ gate fires, 24 deals render, stats compute, per-pouch sorting correct, all
-three assets return 200. `http://` 301-redirects to `https://`.
+The site is static on GitHub Pages. The **API is a Cloudflare Worker** with a KV
+namespace, so submissions and confirmations are shared state rather than
+per-browser localStorage.
 
-## DNS (Cloudflare)
+## The submission API
 
-Zone `getpouchdeals.com` — was empty, now:
+Worker script: `getpouchdeals-api` · KV namespace: `pouch-deals` (`f7a03ff546cb4f53a9d038c1a0c8b87c`)
 
-```
-A      getpouchdeals.com      185.199.108.153   (DNS-only)
-A      getpouchdeals.com      185.199.109.153
-A      getpouchdeals.com      185.199.110.153
-A      getpouchdeals.com      185.199.111.153
-CNAME  www.getpouchdeals.com  k1ngv34.github.io (DNS-only)
-```
+| Endpoint | Method | Purpose |
+|---|---|---|
+| `/health` | GET | liveness |
+| `/deals` | GET | the feed; supports `?state=`, `?chain=`, `?brand=`, `?limit=` |
+| `/report` | POST | submit a price report |
+| `/vote` | POST | confirm a price is still current |
 
-Records are **DNS-only (grey cloud), not proxied** — deliberate. The token has
-`DNS:Edit` but not `Zone Settings:Edit`, so it cannot change SSL/TLS mode. Proxying
-without setting SSL to Full causes redirect loops on GitHub Pages. Grey-cloud avoids
-that failure mode entirely; GitHub issues its own certificate.
+### Behaviour worth knowing
 
-## Cloudflare account
+- **Reports merge instead of duplicating.** A report matching an existing
+  `chain + brand + size` within 7 days bumps that deal's price and confirmation
+  count rather than creating a second row.
+- **Votes are deduped per IP per deal per day** using a hashed key. Cloudflare
+  rejects client-supplied `CF-Connecting-IP`, so this can't be spoofed.
+- **Feed shows 14 days**; older deals drop out.
+- **Every submission is stored under its own key** (`deal:<id>`) so a write race
+  can't lose it. The assembled `feed` key is a cache and is rebuildable.
+- KV is **eventually consistent** — a read milliseconds after a write can see the
+  old value. Fine for humans; the test suite allows for it.
+- `*.workers.dev` returns **Cloudflare error 1010** to non-browser user agents.
+  Any client (scripts, monitors) must send a normal browser `User-Agent`.
 
-Four zones visible to the token:
+### Verified
 
-- `getpouchdeals.com` — active (live)
-- `vasquezfam.us` — active
-- `vfdlabs.com` — active
-- `kingsbiz.work` — status **`moved`** ⚠️ not active. Worth investigating: `moved`
-  usually means the zone was transferred to a different Cloudflare account or is
-  stuck mid-migration. Its DNS is NOT being served.
+39/39 end-to-end tests pass against the live deployment
+(`python3 getpouchdeals/api/test_api.py`) — submission, merge, voting, dedupe,
+validation, sanitisation, CORS, filters, 404s. A real browser submission on the
+live domain was then read back from the API by a separate client, proving the
+state is genuinely shared.
 
-## Credentials
+## Current data state
 
-`~/.hermes/secrets/cloudflare.env` (mode 600) — account token `cfat_…`, scope
-DNS:Edit + Zone:Read across all zones. Helper: `~/.hermes/scripts/cf.sh`
-(`verify` / `zones` / `records <zone>` / `point <zone>`).
+**The live feed is empty (0 deals).** All test rows were purged. The site renders
+24 sample rows from `data.js` while `demoMode` is true, behind a disclosure
+banner.
 
-**⚠️ ROTATE THIS TOKEN.** It was pasted into the Telegram chat, so it is in the
-session log. It grants DNS rewrite on all four domains, which is the standard
-domain-hijack vector. Manage Account → Account API Tokens → Revoke "Hermes domains",
-create a fresh one, drop it into the env file (mode 600), and nothing else needs
-to change.
+Nothing on the site is a real price yet. That is deliberate — seeding invented
+prices on a community site would be dishonest.
 
-## Still needs you
+## Config switches (`data.js`)
 
-1. **Rotate the Cloudflare token** (above).
-2. **Affiliate signups** — Juice Head 20%, JOEY 20%, FRE 10%. Identity verification
-   required. Send me the tracked links and I swap them into `app.js`.
-3. **AdSense** — send the `ca-pub-` ID and I wire both ad slots.
-4. **Submission backend** — tell me where reports should land (your inbox via
-   Formspree, or a Google Sheet) and I'll build it.
+| Key | Now | Meaning |
+|---|---|---|
+| `demoMode` | `true` | show sample rows alongside live ones |
+| `apiBase` | worker URL | submission API |
+| `adsenseClient` | `""` | no ads — needs your AdSense publisher ID |
+| `submitEndpoint` | `""` | superseded by `apiBase` |
 
-## `demoMode` — still ON, deliberately
+Affiliate links currently point at **program pages, not tracked links**, so they
+earn nothing until you sign up and swap in the tracked URLs.
 
-The 24 rows are sample data and the page says so in a visible banner. The site is
-now **publicly live on the real domain**. I have not flipped it to `false` because
-that is a launch decision, not a maintenance one — flipping it empties the feed.
-Either:
-- seed real prices you have personally seen, or
-- flip the flag and launch honest-but-empty ("no reports yet, add one")
+## Ops
 
-I will not publish invented prices as though they were real reports.
+- Watchdog: `~/.hermes/scripts/getpouchdeals_health.sh`, cron every 6h, silent
+  when healthy. Checks apex, www, GitHub origin, assets, **and the API**.
+- Deploy the API: `python3 ~/getpouchdeals/api/deploy.py`
+- Redeploy the site: commit + push to `main` (Pages builds automatically)
+- Bump `?v=` on `app.js`/`data.js`/`styles.css` in `index.html` whenever you
+  change them — Pages caches for 10 minutes and that has bitten us repeatedly.
 
-## The constraint
+## What is still missing
 
-No API, no scrapeable source for in-store pouch prices — every chain prices locally.
-The feed becomes real only when people submit. And Reddit is network-blocked from
-this machine, so launch distribution is yours. I can draft the posts.
-
-## Possible next work (no input needed)
-
-- Per-state landing pages (`/deals/texas`) — those are what rank in search
-- The submission backend
-- Seed the feed from public sources, clearly labelled as sourced not user-submitted
-- Investigate `kingsbiz.work`'s `moved` status
+1. **Real submissions.** The plumbing works; the feed is empty. Distribution is
+   the limiter. Reddit is network-blocked from this box, so that runs through you.
+2. **`Zone → Workers Routes → Edit`** on the Cloudflare token, to serve the API
+   at `getpouchdeals.com/api/*` instead of the `workers.dev` URL. Cosmetic —
+   same-origin and no CORS — not blocking.
+3. **AdSense publisher ID** and **tracked affiliate links** — both need your
+   accounts.
+4. **State/store SEO pages** — one indexable page today; this is the organic
+   search engine and the next build.

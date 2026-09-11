@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=4">
+<link rel="stylesheet" href="styles.css?v=5">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"GetPouchDeals",
@@ -155,6 +155,16 @@
     <h2>Buying online instead?</h2>
     <p>Online retailers discount harder than stores and usually ship free past a cart minimum.
        Links below earn us a commission at no extra cost to you — it keeps the site free.</p>
+
+    <h3 class="subhead">Cheapest online right now</h3>
+    <p class="subnote">
+      Published prices taken straight from each retailer's own catalogue, refreshed daily.
+      These are <strong>not</strong> community reports and we earn nothing on them — they are
+      here so the site is useful before the in-store feed fills up.
+      <span id="onlineStamp"></span>
+    </p>
+    <div class="onlinelist" id="onlineList"></div>
+
     <div class="retailers" id="retailers"></div>
     <p class="disclosure">
       Disclosure: GetPouchDeals earns a commission on qualifying purchases made through the links
@@ -230,6 +240,6 @@
 </div>
 
 <script src="data.js?v=4"></script>
-<script src="app.js?v=4"></script>
+<script src="app.js?v=5"></script>
 </body>
 </html>
