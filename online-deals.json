@@ -1,6 +1,6 @@
 {
- "generatedAt": 1789218005,
- "generatedAtISO": "2026-09-12T13:00:05Z",
+ "generatedAt": 1789304435,
+ "generatedAtISO": "2026-09-13T13:00:35Z",
  "sources": [
   {
    "name": "PouchSpot",
@@ -12,14 +12,14 @@
   },
   {
    "name": "Northerner",
-   "count": 60
+   "count": 55
   },
   {
    "name": "Nicokick",
    "count": 89
   }
  ],
- "count": 490,
+ "count": 485,
  "items": [
   {
    "store": "Northerner",
@@ -258,86 +258,6 @@
    "perCan": 2.79,
    "perPouch": 0.14,
    "url": "https://www.northerner.com/us/clew-spearmint-15mg",
-   "available": true,
-   "type": "Nicotine Pouch"
-  },
-  {
-   "store": "Northerner",
-   "brand": "CLEW",
-   "product": "CLEW Cool Mint 3mg",
-   "mg": 3.0,
-   "price": 2.79,
-   "was": null,
-   "cans": 1,
-   "pouchesPerCan": 20,
-   "pouchesVerified": true,
-   "perCan": 2.79,
-   "perPouch": 0.14,
-   "url": "https://www.northerner.com/us/clew-cool-mint-3mg",
-   "available": true,
-   "type": "Nicotine Pouch"
-  },
-  {
-   "store": "Northerner",
-   "brand": "CLEW",
-   "product": "CLEW Cool Mint 6mg",
-   "mg": 6.0,
-   "price": 2.79,
-   "was": null,
-   "cans": 1,
-   "pouchesPerCan": 20,
-   "pouchesVerified": true,
-   "perCan": 2.79,
-   "perPouch": 0.14,
-   "url": "https://www.northerner.com/us/clew-cool-mint-6mg",
-   "available": true,
-   "type": "Nicotine Pouch"
-  },
-  {
-   "store": "Northerner",
-   "brand": "CLEW",
-   "product": "CLEW Cool Mint 9mg",
-   "mg": 9.0,
-   "price": 2.79,
-   "was": null,
-   "cans": 1,
-   "pouchesPerCan": 20,
-   "pouchesVerified": true,
-   "perCan": 2.79,
-   "perPouch": 0.14,
-   "url": "https://www.northerner.com/us/clew-cool-mint-9mg",
-   "available": true,
-   "type": "Nicotine Pouch"
-  },
-  {
-   "store": "Northerner",
-   "brand": "CLEW",
-   "product": "CLEW Cool Mint 12mg",
-   "mg": 12.0,
-   "price": 2.79,
-   "was": null,
-   "cans": 1,
-   "pouchesPerCan": 20,
-   "pouchesVerified": true,
-   "perCan": 2.79,
-   "perPouch": 0.14,
-   "url": "https://www.northerner.com/us/clew-cool-mint-12mg",
-   "available": true,
-   "type": "Nicotine Pouch"
-  },
-  {
-   "store": "Northerner",
-   "brand": "CLEW",
-   "product": "CLEW Cool Mint 15mg",
-   "mg": 15.0,
-   "price": 2.79,
-   "was": null,
-   "cans": 1,
-   "pouchesPerCan": 20,
-   "pouchesVerified": true,
-   "perCan": 2.79,
-   "perPouch": 0.14,
-   "url": "https://www.northerner.com/us/clew-cool-mint-15mg",
    "available": true,
    "type": "Nicotine Pouch"
   },
@@ -1688,38 +1608,6 @@
   {
    "store": "Northerner",
    "brand": "JUICE",
-   "product": "Juice Head Watermelon Strawberry Mint 6mg",
-   "mg": 6.0,
-   "price": 3.29,
-   "was": null,
-   "cans": 1,
-   "pouchesPerCan": 20,
-   "pouchesVerified": true,
-   "perCan": 3.29,
-   "perPouch": 0.165,
-   "url": "https://www.northerner.com/us/juice-head-pouches-watermelon-strawberry-mint-6mg",
-   "available": true,
-   "type": "Nicotine Pouch"
-  },
-  {
-   "store": "Northerner",
-   "brand": "JUICE",
-   "product": "Juice Head Watermelon Strawberry Mint 12mg",
-   "mg": 12.0,
-   "price": 3.29,
-   "was": null,
-   "cans": 1,
-   "pouchesPerCan": 20,
-   "pouchesVerified": true,
-   "perCan": 3.29,
-   "perPouch": 0.165,
-   "url": "https://www.northerner.com/us/juice-head-pouches-watermelon-strawberry-mint-12mg",
-   "available": true,
-   "type": "Nicotine Pouch"
-  },
-  {
-   "store": "Northerner",
-   "brand": "JUICE",
    "product": "Juice Head Blueberry Lemon Mint 6mg",
    "mg": 6.0,
    "price": 3.29,
@@ -1746,6 +1634,38 @@
    "perCan": 3.29,
    "perPouch": 0.165,
    "url": "https://www.northerner.com/us/juice-head-pouches-blueberry-lemon-mint-12mg",
+   "available": true,
+   "type": "Nicotine Pouch"
+  },
+  {
+   "store": "Northerner",
+   "brand": "JUICE",
+   "product": "Juice Head Watermelon Strawberry Mint 6mg",
+   "mg": 6.0,
+   "price": 3.29,
+   "was": null,
+   "cans": 1,
+   "pouchesPerCan": 20,
+   "pouchesVerified": true,
+   "perCan": 3.29,
+   "perPouch": 0.165,
+   "url": "https://www.northerner.com/us/juice-head-pouches-watermelon-strawberry-mint-6mg",
+   "available": true,
+   "type": "Nicotine Pouch"
+  },
+  {
+   "store": "Northerner",
+   "brand": "JUICE",
+   "product": "Juice Head Watermelon Strawberry Mint 12mg",
+   "mg": 12.0,
+   "price": 3.29,
+   "was": null,
+   "cans": 1,
+   "pouchesPerCan": 20,
+   "pouchesVerified": true,
+   "perCan": 3.29,
+   "perPouch": 0.165,
+   "url": "https://www.northerner.com/us/juice-head-pouches-watermelon-strawberry-mint-12mg",
    "available": true,
    "type": "Nicotine Pouch"
   },
@@ -5794,7 +5714,7 @@
    "perCan": 5.69,
    "perPouch": 0.285,
    "url": "https://pouchspot.com/products/siberia-long-portion",
-   "available": true,
+   "available": false,
    "type": "Nicotine Pouch"
   },
   {
