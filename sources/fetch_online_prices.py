@@ -80,7 +80,19 @@ def fetch(url):
 
 
 def pouches_for(brand, title=""):
-    """Return (count, verified). Longest brand key wins so 'zyn ultra' beats 'zyn'."""
+    """Return (count, verified). Most specific signal wins.
+
+    Priority: explicit count in the title > variant keyword > brand default.
+    'zyn ultra' is checked before 'zyn' so the longer key wins.
+    """
+    explicit = count_from_title(title)
+    if explicit:
+        return explicit, True
+
+    var = variant_count(title, brand)
+    if var:
+        return var, True
+
     blob = f"{brand or ''} {title or ''}".lower()
     best = None
     for key, n in POUCHES.items():
@@ -94,6 +106,35 @@ def pouches_for(brand, title=""):
 def mg_from(title):
     m = re.search(r"(\d{1,2}(?:\.\d)?)\s*mg\b", title, re.I)
     return float(m.group(1)) if m else None
+
+
+# Can counts are not uniform even within one brand, which is exactly why a
+# single "zyn = 15" is wrong:
+#   ZYN US standard = 15     ZYN Ultra = 20     ZYN sold in EU = 20
+#   VELO oblong/slim = 15    VELO round/mini = 20
+# So read an explicit count off the title first, then variant keywords, and
+# only then fall back to the brand default.
+VARIANT_COUNTS = [
+    ("zyn ultra", 20), ("zyn mini", 15), ("ultra", None),   # 'ultra' alone is brand-specific
+    ("slim", None), ("mini", None),
+]
+
+
+def count_from_title(title):
+    """Explicit counts beat any guess: '15ct', '20 ct', '20 pouches', '25 portions'."""
+    m = re.search(r"\b(\d{1,3})\s*(?:ct\b|count\b|pouches?\b|portions?\b|nicotine pouches?\b)", title, re.I)
+    if m:
+        n = int(m.group(1))
+        if 5 <= n <= 50:
+            return n
+    return None
+
+
+def variant_count(title, brand):
+    blob = f"{brand or ''} {title}".lower()
+    if "zyn" in blob and "ultra" in blob:
+        return 20
+    return None
 
 
 def cans_from(title):
@@ -161,8 +202,9 @@ def shopify(store, base, keep=None):
     return out
 
 
-def northerner(url):
-    """Northerner exposes schema.org ProductGroup with per-variant offers."""
+def northerner(url, store="Northerner"):
+    """Magento stores using schema.org ProductGroup -> hasVariant[].offers.
+    Northerner and Nicokick both use this exact shape."""
     html = fetch(url)
     blocks = re.findall(r'application/ld\+json[^>]*>(.*?)</script>', html, re.S)
     out = []
@@ -173,8 +215,9 @@ def northerner(url):
             continue
         groups = d if isinstance(d, list) else [d]
         for g in groups:
-            if not isinstance(g, dict):
+            if not isinstance(g, dict) or g.get("@type") != "ProductGroup":
                 continue
+            gname = g.get("name") or ""
             for var in (g.get("hasVariant") or []):
                 if not isinstance(var, dict):
                     continue
@@ -182,9 +225,10 @@ def northerner(url):
                 if isinstance(offers, list):
                     offers = offers[0] if offers else {}
                 price = offers.get("price")
-                name = var.get("name") or ""
+                name = var.get("name") or gname
                 item = norm(
-                    "Northerner", name.split()[0] if name else "", name,
+                    store, (gname.split()[0] if gname else name.split()[0] if name else ""),
+                    name,
                     float(price) if price else 0, None,
                     var.get("url", url),
                     "InStock" in str(offers.get("availability", "")),
@@ -210,7 +254,8 @@ def main():
                                       keep=lambda p: "pouch" in (p.get("product_type","") + " ".join(p.get("tags") or [])).lower()
                                       or p.get("product_type","") == "Nicotine Pouch")),
         ("FRE", lambda: shopify("FRE", "https://frepouch.com")),
-        ("Northerner", lambda: northerner("https://www.northerner.com/us/nicotine-pouches/deals")),
+        ("Northerner", lambda: northerner("https://www.northerner.com/us/nicotine-pouches/deals", "Northerner")),
+        ("Nicokick", lambda: northerner("https://nicokick.com/us/nicotine-pouches", "Nicokick")),
     ]
 
     for name, fn in jobs:

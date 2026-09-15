@@ -59,6 +59,58 @@ banner.
 Nothing on the site is a real price yet. That is deliberate — seeding invented
 prices on a community site would be dishonest.
 
+## Where deal data can and cannot come from
+
+**In-store chain promos are not obtainable. This is proved, not assumed.**
+
+Scanned every Flipp flyer near zip 80202 (Flipp digitises circulars for 2,000+
+retailers including Dollar General, Family Dollar, CVS, Walgreens, Walmart):
+
+- 52 flyers
+- 6,520 individual flyer items
+- **0 nicotine pouch items, 0 pouch prices**
+- 216 coupons + 148 loyalty coupons → **0 tobacco**
+- The 14 loose keyword hits were false positives: Kodiak *waffles*, Nicorette
+  (NRT, not pouches), dog chews, Hershey's
+
+Individual chains behave the same way. Rocket Stores, 7-Eleven, Circle K,
+QuikTrip and Kwik Trip all run pouch offers **inside their apps** (Rocket CREW,
+7Rewards, QT app, Kwik Rewards) behind an account — nothing public, and
+harvesting it would breach their terms.
+
+The cause is structural: US tobacco advertising restrictions (Master Settlement
+Agreement + state law) keep tobacco out of advertised circulars.
+
+Confirmation that crowdsourcing is the only route: a competitor, **PouchHound**,
+already does exactly this and is crowdsourced for the same reason.
+
+### So: online prices (built, live)
+
+Online retailers *do* publish prices, via public intended endpoints:
+
+| Source | Method | Items |
+|---|---|---|
+| PouchSpot | Shopify `/products.json` (store's own public feed) | 249 |
+| FRE | Shopify `/products.json` | 92 |
+| Northerner | schema.org JSON-LD `ProductGroup.hasVariant[].offers` | 60 |
+
+**401 real prices**, refreshed daily by cron `f9d1774db84a` (7am) →
+`~/getpouchdeals/online-deals.json` → rendered in the "Cheapest online right
+now" block in the `#online` section.
+
+Nothing is invented. Every price comes from the retailer's catalogue at fetch
+time. The block is labelled as retailer-published and visually distinct from the
+community feed, because the topbar promises feed prices come from shoppers.
+
+### Pouches per can
+
+`cost per pouch` is the site's core comparison, so a wrong can-count silently
+misranks everything. Counts in `sources/fetch_online_prices.py` are **sourced
+and annotated** (ZYN 15 via us.zyn.com FAQ, CLEW 20, FRE 20, ZEO 25, etc.).
+Items without a sourced count are flagged `pouchesVerified: false` and are
+**excluded from the per-pouch ranking**. A wrong value (Juice Head 25) was found
+and corrected to 20.
+
 ## Config switches (`data.js`)
 
 | Key | Now | Meaning |

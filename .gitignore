@@ -1,3 +1,5 @@
 incoming/
 tools/
 assets/master/
+__pycache__/
+*.pyc
