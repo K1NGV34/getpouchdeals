@@ -1,6 +1,6 @@
 {
- "generatedAt": 1789477233,
- "generatedAtISO": "2026-09-15T13:00:33Z",
+ "generatedAt": 1789563613,
+ "generatedAtISO": "2026-09-16T13:00:13Z",
  "sources": [
   {
    "name": "PouchSpot",
@@ -8,7 +8,7 @@
   },
   {
    "name": "FRE",
-   "count": 92
+   "count": 93
   },
   {
    "name": "Northerner",
@@ -16,7 +16,7 @@
   },
   {
    "name": "Nicokick",
-   "count": 87
+   "count": 86
   }
  ],
  "count": 486,
@@ -690,7 +690,7 @@
    "perCan": 3.09,
    "perPouch": 0.154,
    "url": "https://pouchspot.com/products/nyytti-tar-a32",
-   "available": false,
+   "available": true,
    "type": "Nicotine Pouch"
   },
   {
@@ -1958,6 +1958,54 @@
    "type": "Nicotine Pouch"
   },
   {
+   "store": "Nicokick",
+   "brand": "on!",
+   "product": "On! Coffee 2mg",
+   "mg": 2.0,
+   "price": 3.55,
+   "was": null,
+   "cans": 1,
+   "pouchesPerCan": 20,
+   "pouchesVerified": true,
+   "perCan": 3.55,
+   "perPouch": 0.177,
+   "url": "https://nicokick.com/us/on-2mg-coffee-nicotine-pouches",
+   "available": true,
+   "type": "Nicotine Pouch"
+  },
+  {
+   "store": "Nicokick",
+   "brand": "on!",
+   "product": "On! Coffee 4mg",
+   "mg": 4.0,
+   "price": 3.55,
+   "was": null,
+   "cans": 1,
+   "pouchesPerCan": 20,
+   "pouchesVerified": true,
+   "perCan": 3.55,
+   "perPouch": 0.177,
+   "url": "https://nicokick.com/us/on-4mg-coffee-nicotine-pouches",
+   "available": true,
+   "type": "Nicotine Pouch"
+  },
+  {
+   "store": "Nicokick",
+   "brand": "on!",
+   "product": "On! Coffee 8mg",
+   "mg": 8.0,
+   "price": 3.55,
+   "was": null,
+   "cans": 1,
+   "pouchesPerCan": 20,
+   "pouchesVerified": true,
+   "perCan": 3.55,
+   "perPouch": 0.177,
+   "url": "https://nicokick.com/us/on-8mg-coffee-nicotine-pouches",
+   "available": true,
+   "type": "Nicotine Pouch"
+  },
+  {
    "store": "Northerner",
    "brand": "zone",
    "product": "zone Citrus 6mg",
@@ -2024,7 +2072,7 @@
   {
    "store": "Northerner",
    "brand": "zone",
-   "product": "zone Wintergreen 6mg",
+   "product": "zone Spearmint 6mg",
    "mg": 6.0,
    "price": 3.69,
    "was": null,
@@ -2033,14 +2081,14 @@
    "pouchesVerified": true,
    "perCan": 3.69,
    "perPouch": 0.184,
-   "url": "https://www.northerner.com/us/zone-wintergreen-6mg-nicotine-pouches",
+   "url": "https://www.northerner.com/us/zone-spearmint-6mg-nicotine-pouches",
    "available": true,
    "type": "Nicotine Pouch"
   },
   {
    "store": "Northerner",
    "brand": "zone",
-   "product": "zone Wintergreen 9mg",
+   "product": "zone Spearmint 9mg",
    "mg": 9.0,
    "price": 3.69,
    "was": null,
@@ -2049,39 +2097,7 @@
    "pouchesVerified": true,
    "perCan": 3.69,
    "perPouch": 0.184,
-   "url": "https://www.northerner.com/us/zone-wintergreen-9mg-nicotine-pouches",
-   "available": true,
-   "type": "Nicotine Pouch"
-  },
-  {
-   "store": "Northerner",
-   "brand": "zone",
-   "product": "zone Wintergreen 12mg",
-   "mg": 12.0,
-   "price": 3.69,
-   "was": null,
-   "cans": 1,
-   "pouchesPerCan": 20,
-   "pouchesVerified": true,
-   "perCan": 3.69,
-   "perPouch": 0.184,
-   "url": "https://www.northerner.com/us/zone-wintergreen-12mg",
-   "available": true,
-   "type": "Nicotine Pouch"
-  },
-  {
-   "store": "Northerner",
-   "brand": "zone",
-   "product": "zone Wintergreen 3mg",
-   "mg": 3.0,
-   "price": 3.69,
-   "was": null,
-   "cans": 1,
-   "pouchesPerCan": 20,
-   "pouchesVerified": true,
-   "perCan": 3.69,
-   "perPouch": 0.184,
-   "url": "https://www.northerner.com/us/zone-wintergreen-3mg",
+   "url": "https://www.northerner.com/us/zone-spearmint-9mg-nicotine-pouches",
    "available": true,
    "type": "Nicotine Pouch"
   },
@@ -2152,7 +2168,7 @@
   {
    "store": "Northerner",
    "brand": "zone",
-   "product": "zone Spearmint 6mg",
+   "product": "zone Wintergreen 6mg",
    "mg": 6.0,
    "price": 3.69,
    "was": null,
@@ -2161,14 +2177,14 @@
    "pouchesVerified": true,
    "perCan": 3.69,
    "perPouch": 0.184,
-   "url": "https://www.northerner.com/us/zone-spearmint-6mg-nicotine-pouches",
+   "url": "https://www.northerner.com/us/zone-wintergreen-6mg-nicotine-pouches",
    "available": true,
    "type": "Nicotine Pouch"
   },
   {
    "store": "Northerner",
    "brand": "zone",
-   "product": "zone Spearmint 9mg",
+   "product": "zone Wintergreen 9mg",
    "mg": 9.0,
    "price": 3.69,
    "was": null,
@@ -2177,7 +2193,39 @@
    "pouchesVerified": true,
    "perCan": 3.69,
    "perPouch": 0.184,
-   "url": "https://www.northerner.com/us/zone-spearmint-9mg-nicotine-pouches",
+   "url": "https://www.northerner.com/us/zone-wintergreen-9mg-nicotine-pouches",
+   "available": true,
+   "type": "Nicotine Pouch"
+  },
+  {
+   "store": "Northerner",
+   "brand": "zone",
+   "product": "zone Wintergreen 12mg",
+   "mg": 12.0,
+   "price": 3.69,
+   "was": null,
+   "cans": 1,
+   "pouchesPerCan": 20,
+   "pouchesVerified": true,
+   "perCan": 3.69,
+   "perPouch": 0.184,
+   "url": "https://www.northerner.com/us/zone-wintergreen-12mg",
+   "available": true,
+   "type": "Nicotine Pouch"
+  },
+  {
+   "store": "Northerner",
+   "brand": "zone",
+   "product": "zone Wintergreen 3mg",
+   "mg": 3.0,
+   "price": 3.69,
+   "was": null,
+   "cans": 1,
+   "pouchesPerCan": 20,
+   "pouchesVerified": true,
+   "perCan": 3.69,
+   "perPouch": 0.184,
+   "url": "https://www.northerner.com/us/zone-wintergreen-3mg",
    "available": true,
    "type": "Nicotine Pouch"
   },
@@ -2242,70 +2290,6 @@
    "perCan": 3.69,
    "perPouch": 0.184,
    "url": "https://www.northerner.com/us/zone-tobacco-9mg-nicotine-pouches",
-   "available": true,
-   "type": "Nicotine Pouch"
-  },
-  {
-   "store": "Nicokick",
-   "brand": "zone",
-   "product": "zone Wintergreen 6mg",
-   "mg": 6.0,
-   "price": 3.69,
-   "was": null,
-   "cans": 1,
-   "pouchesPerCan": 20,
-   "pouchesVerified": true,
-   "perCan": 3.69,
-   "perPouch": 0.184,
-   "url": "https://nicokick.com/us/zone-wintergreen-6mg",
-   "available": true,
-   "type": "Nicotine Pouch"
-  },
-  {
-   "store": "Nicokick",
-   "brand": "zone",
-   "product": "zone Wintergreen 9mg",
-   "mg": 9.0,
-   "price": 3.69,
-   "was": null,
-   "cans": 1,
-   "pouchesPerCan": 20,
-   "pouchesVerified": true,
-   "perCan": 3.69,
-   "perPouch": 0.184,
-   "url": "https://nicokick.com/us/zone-wintergreen-9mg",
-   "available": true,
-   "type": "Nicotine Pouch"
-  },
-  {
-   "store": "Nicokick",
-   "brand": "zone",
-   "product": "zone Wintergreen 12mg",
-   "mg": 12.0,
-   "price": 3.69,
-   "was": null,
-   "cans": 1,
-   "pouchesPerCan": 20,
-   "pouchesVerified": true,
-   "perCan": 3.69,
-   "perPouch": 0.184,
-   "url": "https://nicokick.com/us/zone-wintergreen-12mg",
-   "available": true,
-   "type": "Nicotine Pouch"
-  },
-  {
-   "store": "Nicokick",
-   "brand": "zone",
-   "product": "zone Wintergreen 3mg",
-   "mg": 3.0,
-   "price": 3.69,
-   "was": null,
-   "cans": 1,
-   "pouchesPerCan": 20,
-   "pouchesVerified": true,
-   "perCan": 3.69,
-   "perPouch": 0.184,
-   "url": "https://nicokick.com/us/zone-wintergreen-3mg",
    "available": true,
    "type": "Nicotine Pouch"
   },
@@ -2770,7 +2754,7 @@
    "perCan": 3.99,
    "perPouch": 0.2,
    "url": "https://pouchspot.com/products/nordic-spirit-jalapeno-lime-max",
-   "available": false,
+   "available": true,
    "type": "Nicotine Pouch"
   },
   {
@@ -2786,7 +2770,7 @@
    "perCan": 3.99,
    "perPouch": 0.2,
    "url": "https://pouchspot.com/products/nordic-spirit-icy-peppermint-max",
-   "available": false,
+   "available": true,
    "type": "Nicotine Pouch"
   },
   {
@@ -3346,7 +3330,7 @@
    "perCan": 4.29,
    "perPouch": 0.214,
    "url": "https://pouchspot.com/products/lundgrens-mork-stark",
-   "available": true,
+   "available": false,
    "type": "Nicotine Pouch"
   },
   {
@@ -5080,6 +5064,22 @@
   {
    "store": "FRE",
    "brand": "FRE Pouch",
+   "product": "Strawberry Kiwi Ice",
+   "mg": null,
+   "price": 5.29,
+   "was": null,
+   "cans": 1,
+   "pouchesPerCan": 20,
+   "pouchesVerified": true,
+   "perCan": 5.29,
+   "perPouch": 0.265,
+   "url": "https://frepouch.com/products/strawberry-kiwi-ice",
+   "available": true,
+   "type": "Nicotine Pouch"
+  },
+  {
+   "store": "FRE",
+   "brand": "FRE Pouch",
    "product": "Pink Lemonade Ice",
    "mg": null,
    "price": 5.29,
@@ -5586,7 +5586,7 @@
    "perCan": 5.69,
    "perPouch": 0.285,
    "url": "https://pouchspot.com/products/velo-guava-passionfruit-slim",
-   "available": true,
+   "available": false,
    "type": "Nicotine Pouch"
   },
   {
@@ -5650,7 +5650,7 @@
    "perCan": 5.69,
    "perPouch": 0.285,
    "url": "https://pouchspot.com/products/velo-bright-spearmint-14mg",
-   "available": true,
+   "available": false,
    "type": "Nicotine Pouch"
   },
   {
@@ -6322,7 +6322,7 @@
    "perCan": 6.29,
    "perPouch": 0.315,
    "url": "https://pouchspot.com/products/velo-bright-peppermint-zero",
-   "available": false,
+   "available": true,
    "type": "Nicotine Pouch"
   },
   {
@@ -6354,7 +6354,7 @@
    "perCan": 6.29,
    "perPouch": 0.315,
    "url": "https://pouchspot.com/products/velo-wintery-watermelon-zero",
-   "available": false,
+   "available": true,
    "type": "Nicotine Pouch"
   },
   {
