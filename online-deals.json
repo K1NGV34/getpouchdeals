@@ -1,6 +1,6 @@
 {
- "generatedAt": 1789563613,
- "generatedAtISO": "2026-09-16T13:00:13Z",
+ "generatedAt": 1789650039,
+ "generatedAtISO": "2026-09-17T13:00:39Z",
  "sources": [
   {
    "name": "PouchSpot",
@@ -12,14 +12,14 @@
   },
   {
    "name": "Northerner",
-   "count": 58
+   "count": 59
   },
   {
    "name": "Nicokick",
    "count": 86
   }
  ],
- "count": 486,
+ "count": 487,
  "items": [
   {
    "store": "Northerner",
@@ -210,7 +210,7 @@
    "perCan": 2.79,
    "perPouch": 0.14,
    "url": "https://www.northerner.com/us/clew-spearmint-6mg",
-   "available": false,
+   "available": true,
    "type": "Nicotine Pouch"
   },
   {
@@ -258,6 +258,86 @@
    "perCan": 2.79,
    "perPouch": 0.14,
    "url": "https://www.northerner.com/us/clew-spearmint-15mg",
+   "available": true,
+   "type": "Nicotine Pouch"
+  },
+  {
+   "store": "Northerner",
+   "brand": "CLEW",
+   "product": "CLEW Cool Mint 3mg",
+   "mg": 3.0,
+   "price": 2.79,
+   "was": null,
+   "cans": 1,
+   "pouchesPerCan": 20,
+   "pouchesVerified": true,
+   "perCan": 2.79,
+   "perPouch": 0.14,
+   "url": "https://www.northerner.com/us/clew-cool-mint-3mg",
+   "available": true,
+   "type": "Nicotine Pouch"
+  },
+  {
+   "store": "Northerner",
+   "brand": "CLEW",
+   "product": "CLEW Cool Mint 6mg",
+   "mg": 6.0,
+   "price": 2.79,
+   "was": null,
+   "cans": 1,
+   "pouchesPerCan": 20,
+   "pouchesVerified": true,
+   "perCan": 2.79,
+   "perPouch": 0.14,
+   "url": "https://www.northerner.com/us/clew-cool-mint-6mg",
+   "available": true,
+   "type": "Nicotine Pouch"
+  },
+  {
+   "store": "Northerner",
+   "brand": "CLEW",
+   "product": "CLEW Cool Mint 9mg",
+   "mg": 9.0,
+   "price": 2.79,
+   "was": null,
+   "cans": 1,
+   "pouchesPerCan": 20,
+   "pouchesVerified": true,
+   "perCan": 2.79,
+   "perPouch": 0.14,
+   "url": "https://www.northerner.com/us/clew-cool-mint-9mg",
+   "available": true,
+   "type": "Nicotine Pouch"
+  },
+  {
+   "store": "Northerner",
+   "brand": "CLEW",
+   "product": "CLEW Cool Mint 12mg",
+   "mg": 12.0,
+   "price": 2.79,
+   "was": null,
+   "cans": 1,
+   "pouchesPerCan": 20,
+   "pouchesVerified": true,
+   "perCan": 2.79,
+   "perPouch": 0.14,
+   "url": "https://www.northerner.com/us/clew-cool-mint-12mg",
+   "available": true,
+   "type": "Nicotine Pouch"
+  },
+  {
+   "store": "Northerner",
+   "brand": "CLEW",
+   "product": "CLEW Cool Mint 15mg",
+   "mg": 15.0,
+   "price": 2.79,
+   "was": null,
+   "cans": 1,
+   "pouchesPerCan": 20,
+   "pouchesVerified": true,
+   "perCan": 2.79,
+   "perPouch": 0.14,
+   "url": "https://www.northerner.com/us/clew-cool-mint-15mg",
    "available": true,
    "type": "Nicotine Pouch"
   },
@@ -1576,7 +1656,7 @@
   {
    "store": "Northerner",
    "brand": "JUICE",
-   "product": "Juice Head Watermelon Strawberry Mint 6mg",
+   "product": "Juice Head Raspberry Lemonade Mint 6mg",
    "mg": 6.0,
    "price": 3.29,
    "was": null,
@@ -1585,14 +1665,14 @@
    "pouchesVerified": true,
    "perCan": 3.29,
    "perPouch": 0.165,
-   "url": "https://www.northerner.com/us/juice-head-pouches-watermelon-strawberry-mint-6mg",
+   "url": "https://www.northerner.com/us/juice-head-pouches-raspberry-lemonade-mint-6mg",
    "available": true,
    "type": "Nicotine Pouch"
   },
   {
    "store": "Northerner",
    "brand": "JUICE",
-   "product": "Juice Head Watermelon Strawberry Mint 12mg",
+   "product": "Juice Head Raspberry Lemonade Mint 12mg",
    "mg": 12.0,
    "price": 3.29,
    "was": null,
@@ -1601,7 +1681,7 @@
    "pouchesVerified": true,
    "perCan": 3.29,
    "perPouch": 0.165,
-   "url": "https://www.northerner.com/us/juice-head-pouches-watermelon-strawberry-mint-12mg",
+   "url": "https://www.northerner.com/us/juice-head-pouches-raspberry-lemonade-mint-12mg",
    "available": true,
    "type": "Nicotine Pouch"
   },
@@ -1640,7 +1720,7 @@
   {
    "store": "Northerner",
    "brand": "JUICE",
-   "product": "Juice Head Raspberry Lemonade Mint 6mg",
+   "product": "Juice Head Watermelon Strawberry Mint 6mg",
    "mg": 6.0,
    "price": 3.29,
    "was": null,
@@ -1649,14 +1729,14 @@
    "pouchesVerified": true,
    "perCan": 3.29,
    "perPouch": 0.165,
-   "url": "https://www.northerner.com/us/juice-head-pouches-raspberry-lemonade-mint-6mg",
+   "url": "https://www.northerner.com/us/juice-head-pouches-watermelon-strawberry-mint-6mg",
    "available": true,
    "type": "Nicotine Pouch"
   },
   {
    "store": "Northerner",
    "brand": "JUICE",
-   "product": "Juice Head Raspberry Lemonade Mint 12mg",
+   "product": "Juice Head Watermelon Strawberry Mint 12mg",
    "mg": 12.0,
    "price": 3.29,
    "was": null,
@@ -1665,7 +1745,7 @@
    "pouchesVerified": true,
    "perCan": 3.29,
    "perPouch": 0.165,
-   "url": "https://www.northerner.com/us/juice-head-pouches-raspberry-lemonade-mint-12mg",
+   "url": "https://www.northerner.com/us/juice-head-pouches-watermelon-strawberry-mint-12mg",
    "available": true,
    "type": "Nicotine Pouch"
   },
@@ -2114,7 +2194,7 @@
    "perCan": 3.69,
    "perPouch": 0.184,
    "url": "https://www.northerner.com/us/zone-dragon-fruit-6mg-nicotine-pouches",
-   "available": true,
+   "available": false,
    "type": "Nicotine Pouch"
   },
   {
@@ -2162,70 +2242,6 @@
    "perCan": 3.69,
    "perPouch": 0.184,
    "url": "https://www.northerner.com/us/zone-dragon-fruit-3mg",
-   "available": true,
-   "type": "Nicotine Pouch"
-  },
-  {
-   "store": "Northerner",
-   "brand": "zone",
-   "product": "zone Wintergreen 6mg",
-   "mg": 6.0,
-   "price": 3.69,
-   "was": null,
-   "cans": 1,
-   "pouchesPerCan": 20,
-   "pouchesVerified": true,
-   "perCan": 3.69,
-   "perPouch": 0.184,
-   "url": "https://www.northerner.com/us/zone-wintergreen-6mg-nicotine-pouches",
-   "available": true,
-   "type": "Nicotine Pouch"
-  },
-  {
-   "store": "Northerner",
-   "brand": "zone",
-   "product": "zone Wintergreen 9mg",
-   "mg": 9.0,
-   "price": 3.69,
-   "was": null,
-   "cans": 1,
-   "pouchesPerCan": 20,
-   "pouchesVerified": true,
-   "perCan": 3.69,
-   "perPouch": 0.184,
-   "url": "https://www.northerner.com/us/zone-wintergreen-9mg-nicotine-pouches",
-   "available": true,
-   "type": "Nicotine Pouch"
-  },
-  {
-   "store": "Northerner",
-   "brand": "zone",
-   "product": "zone Wintergreen 12mg",
-   "mg": 12.0,
-   "price": 3.69,
-   "was": null,
-   "cans": 1,
-   "pouchesPerCan": 20,
-   "pouchesVerified": true,
-   "perCan": 3.69,
-   "perPouch": 0.184,
-   "url": "https://www.northerner.com/us/zone-wintergreen-12mg",
-   "available": true,
-   "type": "Nicotine Pouch"
-  },
-  {
-   "store": "Northerner",
-   "brand": "zone",
-   "product": "zone Wintergreen 3mg",
-   "mg": 3.0,
-   "price": 3.69,
-   "was": null,
-   "cans": 1,
-   "pouchesPerCan": 20,
-   "pouchesVerified": true,
-   "perCan": 3.69,
-   "perPouch": 0.184,
-   "url": "https://www.northerner.com/us/zone-wintergreen-3mg",
    "available": true,
    "type": "Nicotine Pouch"
   },
@@ -2354,7 +2370,7 @@
    "perCan": 3.69,
    "perPouch": 0.184,
    "url": "https://nicokick.com/us/zone-spearmint-9mg",
-   "available": true,
+   "available": false,
    "type": "Nicotine Pouch"
   },
   {
@@ -3330,7 +3346,7 @@
    "perCan": 4.29,
    "perPouch": 0.214,
    "url": "https://pouchspot.com/products/lundgrens-mork-stark",
-   "available": false,
+   "available": true,
    "type": "Nicotine Pouch"
   },
   {
@@ -3938,7 +3954,7 @@
    "perCan": 4.55,
    "perPouch": 0.227,
    "url": "https://pouchspot.com/products/klint-polar-mint-3",
-   "available": false,
+   "available": true,
    "type": "Nicotine Pouch"
   },
   {
@@ -4274,22 +4290,6 @@
    "perCan": 3.49,
    "perPouch": 0.233,
    "url": "https://nicokick.com/us/zyn-3-cinnamon-nicotine-pouches",
-   "available": true,
-   "type": "Nicotine Pouch"
-  },
-  {
-   "store": "Nicokick",
-   "brand": "ZYN",
-   "product": "ZYN Cinnamon 6mg",
-   "mg": 6.0,
-   "price": 3.49,
-   "was": null,
-   "cans": 1,
-   "pouchesPerCan": 15,
-   "pouchesVerified": true,
-   "perCan": 3.49,
-   "perPouch": 0.233,
-   "url": "https://nicokick.com/us/zyn-6-cinnamon-nicotine-pouches",
    "available": true,
    "type": "Nicotine Pouch"
   },
@@ -4728,6 +4728,22 @@
   {
    "store": "Nicokick",
    "brand": "VELO",
+   "product": "VELO Plus Dragon Fruit 6mg",
+   "mg": 6.0,
+   "price": 4.99,
+   "was": null,
+   "cans": 1,
+   "pouchesPerCan": 20,
+   "pouchesVerified": true,
+   "perCan": 4.99,
+   "perPouch": 0.249,
+   "url": "https://nicokick.com/us/velo-plus-dragon-fruit-6mg",
+   "available": true,
+   "type": "Nicotine Pouch"
+  },
+  {
+   "store": "Nicokick",
+   "brand": "VELO",
    "product": "VELO Plus Spearmint 9mg",
    "mg": 9.0,
    "price": 4.99,
@@ -4770,22 +4786,6 @@
    "perCan": 4.99,
    "perPouch": 0.249,
    "url": "https://nicokick.com/us/velo-plus-spearmint-3mg",
-   "available": true,
-   "type": "Nicotine Pouch"
-  },
-  {
-   "store": "Nicokick",
-   "brand": "VELO",
-   "product": "VELO Plus Dragon Fruit 6mg",
-   "mg": 6.0,
-   "price": 4.99,
-   "was": null,
-   "cans": 1,
-   "pouchesPerCan": 20,
-   "pouchesVerified": true,
-   "perCan": 4.99,
-   "perPouch": 0.249,
-   "url": "https://nicokick.com/us/velo-plus-dragon-fruit-6mg",
    "available": true,
    "type": "Nicotine Pouch"
   },
@@ -4962,7 +4962,7 @@
    "perCan": 5.1,
    "perPouch": 0.255,
    "url": "https://pouchspot.com/products/lewa-energy-power-apple-spruce",
-   "available": true,
+   "available": false,
    "type": "Nicotine Pouch"
   },
   {
@@ -5554,7 +5554,7 @@
    "perCan": 5.69,
    "perPouch": 0.285,
    "url": "https://pouchspot.com/products/velo-blueberry-ice-slim",
-   "available": true,
+   "available": false,
    "type": "Nicotine Pouch"
   },
   {
@@ -6066,6 +6066,22 @@
    "perCan": 4.49,
    "perPouch": 0.299,
    "url": "https://nicokick.com/us/zyn-6-coffee-nicotine-pouches",
+   "available": true,
+   "type": "Nicotine Pouch"
+  },
+  {
+   "store": "Nicokick",
+   "brand": "ZYN",
+   "product": "ZYN Cinnamon 6mg",
+   "mg": 6.0,
+   "price": 4.49,
+   "was": null,
+   "cans": 1,
+   "pouchesPerCan": 15,
+   "pouchesVerified": true,
+   "perCan": 4.49,
+   "perPouch": 0.299,
+   "url": "https://nicokick.com/us/zyn-6-cinnamon-nicotine-pouches",
    "available": true,
    "type": "Nicotine Pouch"
   },
