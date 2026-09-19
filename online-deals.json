@@ -1,6 +1,6 @@
 {
- "generatedAt": 1789736419,
- "generatedAtISO": "2026-09-18T13:00:19Z",
+ "generatedAt": 1789822859,
+ "generatedAtISO": "2026-09-19T13:00:59Z",
  "sources": [
   {
    "name": "PouchSpot",
@@ -12,14 +12,14 @@
   },
   {
    "name": "Northerner",
-   "count": 62
+   "count": 61
   },
   {
    "name": "Nicokick",
    "count": 87
   }
  ],
- "count": 491,
+ "count": 490,
  "items": [
   {
    "store": "Northerner",
@@ -1522,7 +1522,7 @@
    "perCan": 3.29,
    "perPouch": 0.165,
    "url": "https://pouchspot.com/products/leo-bleck-cherry-zero",
-   "available": false,
+   "available": true,
    "type": "Nicotine Pouch"
   },
   {
@@ -1538,7 +1538,7 @@
    "perCan": 3.29,
    "perPouch": 0.165,
    "url": "https://pouchspot.com/products/leo-freeze-ice-zero",
-   "available": false,
+   "available": true,
    "type": "Nicotine Pouch"
   },
   {
@@ -1688,38 +1688,6 @@
   {
    "store": "Northerner",
    "brand": "JUICE",
-   "product": "Juice Head Blueberry Lemon Mint 6mg",
-   "mg": 6.0,
-   "price": 3.29,
-   "was": null,
-   "cans": 1,
-   "pouchesPerCan": 20,
-   "pouchesVerified": true,
-   "perCan": 3.29,
-   "perPouch": 0.165,
-   "url": "https://www.northerner.com/us/juice-head-pouches-blueberry-lemon-mint-6mg",
-   "available": true,
-   "type": "Nicotine Pouch"
-  },
-  {
-   "store": "Northerner",
-   "brand": "JUICE",
-   "product": "Juice Head Blueberry Lemon Mint 12mg",
-   "mg": 12.0,
-   "price": 3.29,
-   "was": null,
-   "cans": 1,
-   "pouchesPerCan": 20,
-   "pouchesVerified": true,
-   "perCan": 3.29,
-   "perPouch": 0.165,
-   "url": "https://www.northerner.com/us/juice-head-pouches-blueberry-lemon-mint-12mg",
-   "available": true,
-   "type": "Nicotine Pouch"
-  },
-  {
-   "store": "Northerner",
-   "brand": "JUICE",
    "product": "Juice Head Watermelon Strawberry Mint 6mg",
    "mg": 6.0,
    "price": 3.29,
@@ -1746,6 +1714,38 @@
    "perCan": 3.29,
    "perPouch": 0.165,
    "url": "https://www.northerner.com/us/juice-head-pouches-watermelon-strawberry-mint-12mg",
+   "available": true,
+   "type": "Nicotine Pouch"
+  },
+  {
+   "store": "Northerner",
+   "brand": "JUICE",
+   "product": "Juice Head Blueberry Lemon Mint 6mg",
+   "mg": 6.0,
+   "price": 3.29,
+   "was": null,
+   "cans": 1,
+   "pouchesPerCan": 20,
+   "pouchesVerified": true,
+   "perCan": 3.29,
+   "perPouch": 0.165,
+   "url": "https://www.northerner.com/us/juice-head-pouches-blueberry-lemon-mint-6mg",
+   "available": true,
+   "type": "Nicotine Pouch"
+  },
+  {
+   "store": "Northerner",
+   "brand": "JUICE",
+   "product": "Juice Head Blueberry Lemon Mint 12mg",
+   "mg": 12.0,
+   "price": 3.29,
+   "was": null,
+   "cans": 1,
+   "pouchesPerCan": 20,
+   "pouchesVerified": true,
+   "perCan": 3.29,
+   "perPouch": 0.165,
+   "url": "https://www.northerner.com/us/juice-head-pouches-blueberry-lemon-mint-12mg",
    "available": true,
    "type": "Nicotine Pouch"
   },
@@ -2146,7 +2146,7 @@
    "perCan": 3.69,
    "perPouch": 0.184,
    "url": "https://www.northerner.com/us/zone-wintergreen-12mg",
-   "available": false,
+   "available": true,
    "type": "Nicotine Pouch"
   },
   {
@@ -2200,38 +2200,6 @@
   {
    "store": "Northerner",
    "brand": "zone",
-   "product": "zone Mint 6mg",
-   "mg": 6.0,
-   "price": 3.69,
-   "was": null,
-   "cans": 1,
-   "pouchesPerCan": 20,
-   "pouchesVerified": true,
-   "perCan": 3.69,
-   "perPouch": 0.184,
-   "url": "https://www.northerner.com/us/zone-mint-6mg-nicotine-pouches",
-   "available": true,
-   "type": "Nicotine Pouch"
-  },
-  {
-   "store": "Northerner",
-   "brand": "zone",
-   "product": "zone Mint 9mg",
-   "mg": 9.0,
-   "price": 3.69,
-   "was": null,
-   "cans": 1,
-   "pouchesPerCan": 20,
-   "pouchesVerified": true,
-   "perCan": 3.69,
-   "perPouch": 0.184,
-   "url": "https://www.northerner.com/us/zone-mint-9mg-nicotine-pouches",
-   "available": true,
-   "type": "Nicotine Pouch"
-  },
-  {
-   "store": "Northerner",
-   "brand": "zone",
    "product": "zone Dragonfruit 6mg",
    "mg": 6.0,
    "price": 3.69,
@@ -2242,7 +2210,7 @@
    "perCan": 3.69,
    "perPouch": 0.184,
    "url": "https://www.northerner.com/us/zone-dragon-fruit-6mg-nicotine-pouches",
-   "available": false,
+   "available": true,
    "type": "Nicotine Pouch"
   },
   {
@@ -2290,6 +2258,38 @@
    "perCan": 3.69,
    "perPouch": 0.184,
    "url": "https://www.northerner.com/us/zone-dragon-fruit-3mg",
+   "available": true,
+   "type": "Nicotine Pouch"
+  },
+  {
+   "store": "Northerner",
+   "brand": "zone",
+   "product": "zone Mint 6mg",
+   "mg": 6.0,
+   "price": 3.69,
+   "was": null,
+   "cans": 1,
+   "pouchesPerCan": 20,
+   "pouchesVerified": true,
+   "perCan": 3.69,
+   "perPouch": 0.184,
+   "url": "https://www.northerner.com/us/zone-mint-6mg-nicotine-pouches",
+   "available": true,
+   "type": "Nicotine Pouch"
+  },
+  {
+   "store": "Northerner",
+   "brand": "zone",
+   "product": "zone Mint 9mg",
+   "mg": 9.0,
+   "price": 3.69,
+   "was": null,
+   "cans": 1,
+   "pouchesPerCan": 20,
+   "pouchesVerified": true,
+   "perCan": 3.69,
+   "perPouch": 0.184,
+   "url": "https://www.northerner.com/us/zone-mint-9mg-nicotine-pouches",
    "available": true,
    "type": "Nicotine Pouch"
   },
@@ -2370,7 +2370,7 @@
    "perCan": 3.69,
    "perPouch": 0.184,
    "url": "https://nicokick.com/us/zone-wintergreen-12mg",
-   "available": false,
+   "available": true,
    "type": "Nicotine Pouch"
   },
   {
@@ -5554,22 +5554,6 @@
    "perCan": 5.59,
    "perPouch": 0.279,
    "url": "https://www.northerner.com/us/grizzly-buckshot-12mg-nicotine-pouches",
-   "available": true,
-   "type": "Nicotine Pouch"
-  },
-  {
-   "store": "Northerner",
-   "brand": "Grizzly",
-   "product": "Grizzly Hunter Orange 12mg",
-   "mg": 12.0,
-   "price": 5.59,
-   "was": null,
-   "cans": 1,
-   "pouchesPerCan": 20,
-   "pouchesVerified": true,
-   "perCan": 5.59,
-   "perPouch": 0.279,
-   "url": "https://www.northerner.com/us/grizzly-hunter-orange-12mg-nicotine-pouches",
    "available": true,
    "type": "Nicotine Pouch"
   },
