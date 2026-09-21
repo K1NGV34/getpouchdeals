@@ -1,6 +1,6 @@
 {
- "generatedAt": 1789909229,
- "generatedAtISO": "2026-09-20T13:00:29Z",
+ "generatedAt": 1789995603,
+ "generatedAtISO": "2026-09-21T13:00:03Z",
  "sources": [
   {
    "name": "PouchSpot",
@@ -12,14 +12,14 @@
   },
   {
    "name": "Northerner",
-   "count": 57
+   "count": 61
   },
   {
    "name": "Nicokick",
    "count": 87
   }
  ],
- "count": 486,
+ "count": 490,
  "items": [
   {
    "store": "Northerner",
@@ -258,6 +258,86 @@
    "perCan": 2.79,
    "perPouch": 0.14,
    "url": "https://www.northerner.com/us/clew-spearmint-15mg",
+   "available": true,
+   "type": "Nicotine Pouch"
+  },
+  {
+   "store": "Northerner",
+   "brand": "CLEW",
+   "product": "CLEW Cool Mint 3mg",
+   "mg": 3.0,
+   "price": 2.79,
+   "was": null,
+   "cans": 1,
+   "pouchesPerCan": 20,
+   "pouchesVerified": true,
+   "perCan": 2.79,
+   "perPouch": 0.14,
+   "url": "https://www.northerner.com/us/clew-cool-mint-3mg",
+   "available": true,
+   "type": "Nicotine Pouch"
+  },
+  {
+   "store": "Northerner",
+   "brand": "CLEW",
+   "product": "CLEW Cool Mint 6mg",
+   "mg": 6.0,
+   "price": 2.79,
+   "was": null,
+   "cans": 1,
+   "pouchesPerCan": 20,
+   "pouchesVerified": true,
+   "perCan": 2.79,
+   "perPouch": 0.14,
+   "url": "https://www.northerner.com/us/clew-cool-mint-6mg",
+   "available": true,
+   "type": "Nicotine Pouch"
+  },
+  {
+   "store": "Northerner",
+   "brand": "CLEW",
+   "product": "CLEW Cool Mint 9mg",
+   "mg": 9.0,
+   "price": 2.79,
+   "was": null,
+   "cans": 1,
+   "pouchesPerCan": 20,
+   "pouchesVerified": true,
+   "perCan": 2.79,
+   "perPouch": 0.14,
+   "url": "https://www.northerner.com/us/clew-cool-mint-9mg",
+   "available": true,
+   "type": "Nicotine Pouch"
+  },
+  {
+   "store": "Northerner",
+   "brand": "CLEW",
+   "product": "CLEW Cool Mint 12mg",
+   "mg": 12.0,
+   "price": 2.79,
+   "was": null,
+   "cans": 1,
+   "pouchesPerCan": 20,
+   "pouchesVerified": true,
+   "perCan": 2.79,
+   "perPouch": 0.14,
+   "url": "https://www.northerner.com/us/clew-cool-mint-12mg",
+   "available": true,
+   "type": "Nicotine Pouch"
+  },
+  {
+   "store": "Northerner",
+   "brand": "CLEW",
+   "product": "CLEW Cool Mint 15mg",
+   "mg": 15.0,
+   "price": 2.79,
+   "was": null,
+   "cans": 1,
+   "pouchesPerCan": 20,
+   "pouchesVerified": true,
+   "perCan": 2.79,
+   "perPouch": 0.14,
+   "url": "https://www.northerner.com/us/clew-cool-mint-15mg",
    "available": true,
    "type": "Nicotine Pouch"
   },
@@ -626,7 +706,7 @@
    "perCan": 3.09,
    "perPouch": 0.154,
    "url": "https://pouchspot.com/products/nyytti-white",
-   "available": false,
+   "available": true,
    "type": "Nicotine Pouch"
   },
   {
@@ -1410,7 +1490,7 @@
    "perCan": 3.29,
    "perPouch": 0.165,
    "url": "https://pouchspot.com/products/leo-watermelon-ice-zero",
-   "available": false,
+   "available": true,
    "type": "Nicotine Pouch"
   },
   {
@@ -1426,7 +1506,7 @@
    "perCan": 3.29,
    "perPouch": 0.165,
    "url": "https://pouchspot.com/products/leo-sour-peach-zero",
-   "available": false,
+   "available": true,
    "type": "Nicotine Pouch"
   },
   {
@@ -1442,7 +1522,7 @@
    "perCan": 3.29,
    "perPouch": 0.165,
    "url": "https://pouchspot.com/products/leo-bleck-cherry-zero",
-   "available": false,
+   "available": true,
    "type": "Nicotine Pouch"
   },
   {
@@ -1458,7 +1538,7 @@
    "perCan": 3.29,
    "perPouch": 0.165,
    "url": "https://pouchspot.com/products/leo-freeze-ice-zero",
-   "available": false,
+   "available": true,
    "type": "Nicotine Pouch"
   },
   {
@@ -3314,7 +3394,7 @@
    "perCan": 4.29,
    "perPouch": 0.214,
    "url": "https://pouchspot.com/products/smogen-westcoast-berries",
-   "available": false,
+   "available": true,
    "type": "Nicotine Pouch"
   },
   {
@@ -3346,7 +3426,7 @@
    "perCan": 4.29,
    "perPouch": 0.214,
    "url": "https://pouchspot.com/products/lundgrens-mork-stark",
-   "available": false,
+   "available": true,
    "type": "Nicotine Pouch"
   },
   {
@@ -3394,7 +3474,7 @@
    "perCan": 4.29,
    "perPouch": 0.214,
    "url": "https://pouchspot.com/products/klar-blueberry-mint-regular-mini",
-   "available": false,
+   "available": true,
    "type": "Nicotine Pouch"
   },
   {
@@ -3442,7 +3522,7 @@
    "perCan": 4.29,
    "perPouch": 0.214,
    "url": "https://pouchspot.com/products/klar-strawberry-basil-regular-mini",
-   "available": false,
+   "available": true,
    "type": "Nicotine Pouch"
   },
   {
@@ -3490,7 +3570,7 @@
    "perCan": 4.29,
    "perPouch": 0.214,
    "url": "https://pouchspot.com/products/klar-afterglow-regular-mini",
-   "available": false,
+   "available": true,
    "type": "Nicotine Pouch"
   },
   {
@@ -3682,7 +3762,7 @@
    "perCan": 4.39,
    "perPouch": 0.219,
    "url": "https://pouchspot.com/products/apres-limoncello-di-capri",
-   "available": true,
+   "available": false,
    "type": "Nicotine Pouch"
   },
   {
@@ -3922,7 +4002,7 @@
    "perCan": 4.49,
    "perPouch": 0.225,
    "url": "https://pouchspot.com/products/greatest-cold-dry-16mg",
-   "available": false,
+   "available": true,
    "type": "Nicotine Pouch"
   },
   {
@@ -5490,22 +5570,6 @@
    "perCan": 5.59,
    "perPouch": 0.279,
    "url": "https://www.northerner.com/us/grizzly-hunter-orange-12mg-nicotine-pouches",
-   "available": false,
-   "type": "Nicotine Pouch"
-  },
-  {
-   "store": "Northerner",
-   "brand": "Grizzly",
-   "product": "Grizzly Backcountry 12mg",
-   "mg": 12.0,
-   "price": 5.59,
-   "was": null,
-   "cans": 1,
-   "pouchesPerCan": 20,
-   "pouchesVerified": true,
-   "perCan": 5.59,
-   "perPouch": 0.279,
-   "url": "https://www.northerner.com/us/grizzly-backcountry-12mg-nicotine-pouches",
    "available": false,
    "type": "Nicotine Pouch"
   },
