@@ -1,6 +1,6 @@
 {
- "generatedAt": 1789995603,
- "generatedAtISO": "2026-09-21T13:00:03Z",
+ "generatedAt": 1790082028,
+ "generatedAtISO": "2026-09-22T13:00:28Z",
  "sources": [
   {
    "name": "PouchSpot",
@@ -12,14 +12,14 @@
   },
   {
    "name": "Northerner",
-   "count": 61
+   "count": 59
   },
   {
    "name": "Nicokick",
    "count": 87
   }
  ],
- "count": 490,
+ "count": 488,
  "items": [
   {
    "store": "Northerner",
@@ -1474,7 +1474,7 @@
    "perCan": 3.29,
    "perPouch": 0.165,
    "url": "https://pouchspot.com/products/leo-blue-razz-zero",
-   "available": false,
+   "available": true,
    "type": "Nicotine Pouch"
   },
   {
@@ -2200,70 +2200,6 @@
   {
    "store": "Northerner",
    "brand": "zone",
-   "product": "zone Dragonfruit 6mg",
-   "mg": 6.0,
-   "price": 3.69,
-   "was": null,
-   "cans": 1,
-   "pouchesPerCan": 20,
-   "pouchesVerified": true,
-   "perCan": 3.69,
-   "perPouch": 0.184,
-   "url": "https://www.northerner.com/us/zone-dragon-fruit-6mg-nicotine-pouches",
-   "available": true,
-   "type": "Nicotine Pouch"
-  },
-  {
-   "store": "Northerner",
-   "brand": "zone",
-   "product": "zone Dragonfruit 9mg",
-   "mg": 9.0,
-   "price": 3.69,
-   "was": null,
-   "cans": 1,
-   "pouchesPerCan": 20,
-   "pouchesVerified": true,
-   "perCan": 3.69,
-   "perPouch": 0.184,
-   "url": "https://www.northerner.com/us/zone-dragon-fruit-9mg-nicotine-pouches",
-   "available": true,
-   "type": "Nicotine Pouch"
-  },
-  {
-   "store": "Northerner",
-   "brand": "zone",
-   "product": "zone Dragonfruit 12mg",
-   "mg": 12.0,
-   "price": 3.69,
-   "was": null,
-   "cans": 1,
-   "pouchesPerCan": 20,
-   "pouchesVerified": true,
-   "perCan": 3.69,
-   "perPouch": 0.184,
-   "url": "https://www.northerner.com/us/zone-dragon-fruit-12mg",
-   "available": true,
-   "type": "Nicotine Pouch"
-  },
-  {
-   "store": "Northerner",
-   "brand": "zone",
-   "product": "zone Dragonfruit 3mg",
-   "mg": 3.0,
-   "price": 3.69,
-   "was": null,
-   "cans": 1,
-   "pouchesPerCan": 20,
-   "pouchesVerified": true,
-   "perCan": 3.69,
-   "perPouch": 0.184,
-   "url": "https://www.northerner.com/us/zone-dragon-fruit-3mg",
-   "available": true,
-   "type": "Nicotine Pouch"
-  },
-  {
-   "store": "Northerner",
-   "brand": "zone",
    "product": "zone Mint 6mg",
    "mg": 6.0,
    "price": 3.69,
@@ -2290,7 +2226,7 @@
    "perCan": 3.69,
    "perPouch": 0.184,
    "url": "https://www.northerner.com/us/zone-mint-9mg-nicotine-pouches",
-   "available": true,
+   "available": false,
    "type": "Nicotine Pouch"
   },
   {
@@ -3602,7 +3538,7 @@
    "perCan": 4.39,
    "perPouch": 0.219,
    "url": "https://pouchspot.com/products/juice-head-watermelon-strawberry-super-strong-se",
-   "available": true,
+   "available": false,
    "type": "Nicotine Pouch"
   },
   {
@@ -3618,7 +3554,7 @@
    "perCan": 4.39,
    "perPouch": 0.219,
    "url": "https://pouchspot.com/products/juice-head-watermelon-strawberry-regular-se",
-   "available": true,
+   "available": false,
    "type": "Nicotine Pouch"
   },
   {
@@ -3634,7 +3570,7 @@
    "perCan": 4.39,
    "perPouch": 0.219,
    "url": "https://pouchspot.com/products/juice-head-spicy-pineapple-super-strong-se",
-   "available": true,
+   "available": false,
    "type": "Nicotine Pouch"
   },
   {
@@ -3650,7 +3586,7 @@
    "perCan": 4.39,
    "perPouch": 0.219,
    "url": "https://pouchspot.com/products/juice-head-spicy-pineapple-regular-se",
-   "available": true,
+   "available": false,
    "type": "Nicotine Pouch"
   },
   {
@@ -3682,7 +3618,7 @@
    "perCan": 4.39,
    "perPouch": 0.219,
    "url": "https://pouchspot.com/products/juice-head-peach-pineapple-regular-se",
-   "available": true,
+   "available": false,
    "type": "Nicotine Pouch"
   },
   {
@@ -3698,7 +3634,7 @@
    "perCan": 4.39,
    "perPouch": 0.219,
    "url": "https://pouchspot.com/products/juice-head-blueberry-lemon-super-strong-se",
-   "available": true,
+   "available": false,
    "type": "Nicotine Pouch"
   },
   {
@@ -3714,7 +3650,7 @@
    "perCan": 4.39,
    "perPouch": 0.219,
    "url": "https://pouchspot.com/products/juice-head-blueberry-lemon-regular-se",
-   "available": true,
+   "available": false,
    "type": "Nicotine Pouch"
   },
   {
@@ -3730,7 +3666,7 @@
    "perCan": 4.39,
    "perPouch": 0.219,
    "url": "https://pouchspot.com/products/juice-head-arctic-mint-super-strong-se",
-   "available": true,
+   "available": false,
    "type": "Nicotine Pouch"
   },
   {
@@ -3746,7 +3682,7 @@
    "perCan": 4.39,
    "perPouch": 0.219,
    "url": "https://pouchspot.com/products/juice-head-arctic-mint-regular-se",
-   "available": true,
+   "available": false,
    "type": "Nicotine Pouch"
   },
   {
@@ -4360,22 +4296,6 @@
   {
    "store": "Nicokick",
    "brand": "ZYN",
-   "product": "ZYN Cinnamon 3mg",
-   "mg": 3.0,
-   "price": 3.49,
-   "was": null,
-   "cans": 1,
-   "pouchesPerCan": 15,
-   "pouchesVerified": true,
-   "perCan": 3.49,
-   "perPouch": 0.233,
-   "url": "https://nicokick.com/us/zyn-3-cinnamon-nicotine-pouches",
-   "available": true,
-   "type": "Nicotine Pouch"
-  },
-  {
-   "store": "Nicokick",
-   "brand": "ZYN",
    "product": "ZYN Chill 3mg",
    "mg": 3.0,
    "price": 3.49,
@@ -4680,54 +4600,6 @@
   {
    "store": "Nicokick",
    "brand": "VELO",
-   "product": "VELO Plus Wintergreen 9mg",
-   "mg": 9.0,
-   "price": 4.99,
-   "was": null,
-   "cans": 1,
-   "pouchesPerCan": 20,
-   "pouchesVerified": true,
-   "perCan": 4.99,
-   "perPouch": 0.249,
-   "url": "https://nicokick.com/us/velo-plus-wintergreen-9mg",
-   "available": true,
-   "type": "Nicotine Pouch"
-  },
-  {
-   "store": "Nicokick",
-   "brand": "VELO",
-   "product": "VELO Plus Wintergreen 6mg",
-   "mg": 6.0,
-   "price": 4.99,
-   "was": null,
-   "cans": 1,
-   "pouchesPerCan": 20,
-   "pouchesVerified": true,
-   "perCan": 4.99,
-   "perPouch": 0.249,
-   "url": "https://nicokick.com/us/velo-plus-wintergreen-6mg",
-   "available": true,
-   "type": "Nicotine Pouch"
-  },
-  {
-   "store": "Nicokick",
-   "brand": "VELO",
-   "product": "VELO Plus Wintergreen 3mg",
-   "mg": 3.0,
-   "price": 4.99,
-   "was": null,
-   "cans": 1,
-   "pouchesPerCan": 20,
-   "pouchesVerified": true,
-   "perCan": 4.99,
-   "perPouch": 0.249,
-   "url": "https://nicokick.com/us/velo-plus-wintergreen-3mg",
-   "available": true,
-   "type": "Nicotine Pouch"
-  },
-  {
-   "store": "Nicokick",
-   "brand": "VELO",
    "product": "VELO Plus Wild Berry 6mg",
    "mg": 6.0,
    "price": 4.99,
@@ -4770,6 +4642,54 @@
    "perCan": 4.99,
    "perPouch": 0.249,
    "url": "https://nicokick.com/us/velo-plus-wild-berry-3mg",
+   "available": true,
+   "type": "Nicotine Pouch"
+  },
+  {
+   "store": "Nicokick",
+   "brand": "VELO",
+   "product": "VELO Plus Wintergreen 9mg",
+   "mg": 9.0,
+   "price": 4.99,
+   "was": null,
+   "cans": 1,
+   "pouchesPerCan": 20,
+   "pouchesVerified": true,
+   "perCan": 4.99,
+   "perPouch": 0.249,
+   "url": "https://nicokick.com/us/velo-plus-wintergreen-9mg",
+   "available": true,
+   "type": "Nicotine Pouch"
+  },
+  {
+   "store": "Nicokick",
+   "brand": "VELO",
+   "product": "VELO Plus Wintergreen 6mg",
+   "mg": 6.0,
+   "price": 4.99,
+   "was": null,
+   "cans": 1,
+   "pouchesPerCan": 20,
+   "pouchesVerified": true,
+   "perCan": 4.99,
+   "perPouch": 0.249,
+   "url": "https://nicokick.com/us/velo-plus-wintergreen-6mg",
+   "available": true,
+   "type": "Nicotine Pouch"
+  },
+  {
+   "store": "Nicokick",
+   "brand": "VELO",
+   "product": "VELO Plus Wintergreen 3mg",
+   "mg": 3.0,
+   "price": 4.99,
+   "was": null,
+   "cans": 1,
+   "pouchesPerCan": 20,
+   "pouchesVerified": true,
+   "perCan": 4.99,
+   "perPouch": 0.249,
+   "url": "https://nicokick.com/us/velo-plus-wintergreen-3mg",
    "available": true,
    "type": "Nicotine Pouch"
   },
@@ -4824,6 +4744,38 @@
   {
    "store": "Nicokick",
    "brand": "VELO",
+   "product": "VELO Plus Mint 9mg",
+   "mg": 9.0,
+   "price": 4.99,
+   "was": null,
+   "cans": 1,
+   "pouchesPerCan": 20,
+   "pouchesVerified": true,
+   "perCan": 4.99,
+   "perPouch": 0.249,
+   "url": "https://nicokick.com/us/velo-plus-mint-9mg",
+   "available": true,
+   "type": "Nicotine Pouch"
+  },
+  {
+   "store": "Nicokick",
+   "brand": "VELO",
+   "product": "VELO Plus Mint 6mg",
+   "mg": 6.0,
+   "price": 4.99,
+   "was": null,
+   "cans": 1,
+   "pouchesPerCan": 20,
+   "pouchesVerified": true,
+   "perCan": 4.99,
+   "perPouch": 0.249,
+   "url": "https://nicokick.com/us/velo-plus-mint-6mg",
+   "available": true,
+   "type": "Nicotine Pouch"
+  },
+  {
+   "store": "Nicokick",
+   "brand": "VELO",
    "product": "VELO Plus Spearmint 9mg",
    "mg": 9.0,
    "price": 4.99,
@@ -4870,38 +4822,6 @@
    "type": "Nicotine Pouch"
   },
   {
-   "store": "Nicokick",
-   "brand": "VELO",
-   "product": "VELO Plus Mint 9mg",
-   "mg": 9.0,
-   "price": 4.99,
-   "was": null,
-   "cans": 1,
-   "pouchesPerCan": 20,
-   "pouchesVerified": true,
-   "perCan": 4.99,
-   "perPouch": 0.249,
-   "url": "https://nicokick.com/us/velo-plus-mint-9mg",
-   "available": true,
-   "type": "Nicotine Pouch"
-  },
-  {
-   "store": "Nicokick",
-   "brand": "VELO",
-   "product": "VELO Plus Mint 6mg",
-   "mg": 6.0,
-   "price": 4.99,
-   "was": null,
-   "cans": 1,
-   "pouchesPerCan": 20,
-   "pouchesVerified": true,
-   "perCan": 4.99,
-   "perPouch": 0.249,
-   "url": "https://nicokick.com/us/velo-plus-mint-6mg",
-   "available": true,
-   "type": "Nicotine Pouch"
-  },
-  {
    "store": "PouchSpot",
    "brand": "Skruf",
    "product": "Skruf Intense Spearmint Ice S4",
@@ -4930,7 +4850,7 @@
    "perCan": 5.1,
    "perPouch": 0.255,
    "url": "https://pouchspot.com/products/skruf-intense-peppermint-ice-s4",
-   "available": false,
+   "available": true,
    "type": "Nicotine Pouch"
   },
   {
@@ -4962,7 +4882,7 @@
    "perCan": 5.1,
    "perPouch": 0.255,
    "url": "https://pouchspot.com/products/loop-fresh-peppermint-hyper",
-   "available": true,
+   "available": false,
    "type": "Nicotine Pouch"
   },
   {
@@ -5010,7 +4930,7 @@
    "perCan": 5.1,
    "perPouch": 0.255,
    "url": "https://pouchspot.com/products/loop-blueberry-ice-strong",
-   "available": true,
+   "available": false,
    "type": "Nicotine Pouch"
   },
   {
@@ -5490,7 +5410,7 @@
    "perCan": 5.45,
    "perPouch": 0.273,
    "url": "https://pouchspot.com/products/velo-bright-peppermint",
-   "available": true,
+   "available": false,
    "type": "Nicotine Pouch"
   },
   {
@@ -5506,7 +5426,7 @@
    "perCan": 5.45,
    "perPouch": 0.273,
    "url": "https://pouchspot.com/products/velo-dark-blackcurrant",
-   "available": true,
+   "available": false,
    "type": "Nicotine Pouch"
   },
   {
@@ -5544,6 +5464,38 @@
   {
    "store": "Northerner",
    "brand": "Grizzly",
+   "product": "Grizzly Buckshot 12mg",
+   "mg": 12.0,
+   "price": 5.59,
+   "was": null,
+   "cans": 1,
+   "pouchesPerCan": 20,
+   "pouchesVerified": true,
+   "perCan": 5.59,
+   "perPouch": 0.279,
+   "url": "https://www.northerner.com/us/grizzly-buckshot-12mg-nicotine-pouches",
+   "available": true,
+   "type": "Nicotine Pouch"
+  },
+  {
+   "store": "Northerner",
+   "brand": "Grizzly",
+   "product": "Grizzly Hunter Orange 12mg",
+   "mg": 12.0,
+   "price": 5.59,
+   "was": null,
+   "cans": 1,
+   "pouchesPerCan": 20,
+   "pouchesVerified": true,
+   "perCan": 5.59,
+   "perPouch": 0.279,
+   "url": "https://www.northerner.com/us/grizzly-hunter-orange-12mg-nicotine-pouches",
+   "available": true,
+   "type": "Nicotine Pouch"
+  },
+  {
+   "store": "Northerner",
+   "brand": "Grizzly",
    "product": "Grizzly Copperhead 12mg",
    "mg": 12.0,
    "price": 5.59,
@@ -5560,7 +5512,7 @@
   {
    "store": "Northerner",
    "brand": "Grizzly",
-   "product": "Grizzly Hunter Orange 12mg",
+   "product": "Grizzly Backcountry 12mg",
    "mg": 12.0,
    "price": 5.59,
    "was": null,
@@ -5569,7 +5521,7 @@
    "pouchesVerified": true,
    "perCan": 5.59,
    "perPouch": 0.279,
-   "url": "https://www.northerner.com/us/grizzly-hunter-orange-12mg-nicotine-pouches",
+   "url": "https://www.northerner.com/us/grizzly-backcountry-12mg-nicotine-pouches",
    "available": false,
    "type": "Nicotine Pouch"
   },
@@ -5698,7 +5650,7 @@
    "perCan": 5.69,
    "perPouch": 0.285,
    "url": "https://pouchspot.com/products/velo-bright-spearmint-14mg",
-   "available": false,
+   "available": true,
    "type": "Nicotine Pouch"
   },
   {
@@ -6114,6 +6066,22 @@
    "perCan": 4.49,
    "perPouch": 0.299,
    "url": "https://nicokick.com/us/zyn-6-coffee-nicotine-pouches",
+   "available": true,
+   "type": "Nicotine Pouch"
+  },
+  {
+   "store": "Nicokick",
+   "brand": "ZYN",
+   "product": "ZYN Cinnamon 3mg",
+   "mg": 3.0,
+   "price": 4.49,
+   "was": null,
+   "cans": 1,
+   "pouchesPerCan": 15,
+   "pouchesVerified": true,
+   "perCan": 4.49,
+   "perPouch": 0.299,
+   "url": "https://nicokick.com/us/zyn-3-cinnamon-nicotine-pouches",
    "available": true,
    "type": "Nicotine Pouch"
   },
